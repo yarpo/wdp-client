@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+          "http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>/WEB-INF/application.properties</value>
+		</property>
+	</bean>
+
+	<bean id="com.wdp.web.utils.RequestHelper" class="com.wdp.web.utils.RequestHelper" />
+	<bean id="com.wdp.web.utils.FileSender" class="com.wdp.web.utils.FileSender" />
+
+	<bean id="com.wdp.utils.database.RouteDao" class="com.wdp.utils.database.RouteDao">
+		<constructor-arg index="0">
+			<value>${jdbc.connectionString}</value>
+		</constructor-arg>
+		<constructor-arg index="1">
+			<value>${jdbc.driver}</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="com.wdp.web.utils.RequestToControllerMapper" class="com.wdp.web.utils.RequestToControllerMapper">
+		<constructor-arg type="java.io.InputStream" value="classpath:URLMapping.xml" />
+	</bean>
+
+	<bean id="com.wdp.utils.kml.KmlGenerator" class="com.wdp.utils.kml.KmlGenerator" />
+	<bean id="com.wdp.utils.chart.ChartGenerator" class="com.wdp.utils.chart.ChartGenerator" />
+	<bean id="com.wdp.utils.gpx.GpxParser" class="com.wdp.utils.gpx.GpxParser" />
+
+	<!--controllers-->
+	<bean id="com.wdp.web.controllers.IndexController" class="com.wdp.web.controllers.IndexController"
+		scope="prototype" />
+
+	<bean id="com.wdp.web.controllers.UploadController" class="com.wdp.web.controllers.UploadController"
+		scope="prototype">
+		<constructor-arg ref="com.wdp.utils.database.RouteDao" />
+		<constructor-arg ref="com.wdp.utils.gpx.GpxParser" />
+	</bean>
+
+	<bean id="com.wdp.web.controllers.DaoRpcController" class="com.wdp.web.controllers.DaoRpcController">
+		<constructor-arg ref="com.wdp.utils.database.RouteDao" />
+		<constructor-arg ref="com.wdp.web.utils.RequestHelper" />
+	</bean>
+
+	<bean id="com.wdp.web.controllers.GetChartController" class="com.wdp.web.controllers.GetChartController"
+		scope="prototype">
+		<constructor-arg ref="com.wdp.utils.database.RouteDao" />
+		<constructor-arg ref="com.wdp.utils.chart.ChartGenerator" />
+		<constructor-arg ref="com.wdp.web.utils.RequestHelper" />
+	</bean>
+	
+
+	<bean id="com.wdp.web.controllers.GetKmlController" class="com.wdp.web.controllers.GetKmlController"
+		scope="prototype">
+		<constructor-arg ref="com.wdp.utils.database.RouteDao" />
+		<constructor-arg ref="com.wdp.utils.kml.KmlGenerator" />
+		<constructor-arg ref="com.wdp.web.utils.RequestHelper" />
+		<constructor-arg ref="com.wdp.web.utils.FileSender" />
+	</bean>
+	
+	<!--controllers-->
+</beans>
