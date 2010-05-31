@@ -33,13 +33,22 @@ WDP.dataSrc = function()
 		return url;
 	}
 
-	function fGetRouteById(id, funcSuccess, funcError)
+	function fGetJSONRouteById(id, fSuccess, fError)
 	{
-		//var oAjax = ajaxCreator('Tasks/getKml.do?id=' + 1 + '&ftp=ftp://ftp.republika.pl/studia/wdp/kml/file_' + 0 + '.kml',
-		//	'text', function() {alert('ok') }, funcError);
-		
+		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=getRouteById&args=['+ id +']',
+			'json', fSuccess, fError);
 
 		oAjax.send();
+		return oAjax.response();
+	}
+
+
+	function fGetKMLRouteById(id, funcSuccess, funcError)
+	{
+		var oAjax = ajaxCreator('Tasks/getKml.do?id=' + id + '&ftp=ftp://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_' + id + '.kml',
+			'text', null, funcError);
+
+		//alert(oAjax.send().responseText);
 		return 'http://yarpo.republika.pl/studia/wdp/kml/file_0.kml';
 	}
 
@@ -73,7 +82,7 @@ WDP.dataSrc = function()
 
 	function fUpdateRoute(route, routeId, fSuccess, fError)
 	{
-		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=deleteRoute&args=[' + routeId + ']',
+		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=updateRoute&args=[' + routeId + ']',
 			'json', fSuccess, fError);
 		oAjax.send();
 
@@ -82,7 +91,7 @@ WDP.dataSrc = function()
 
 	function fAddPoint(routeId, pointId, point, fSuccess, fError)
 	{
-		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=deleteRoute&args=[' + routeId + ']',
+		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=addPoint&args=[' + routeId + ']',
 			'json', fSuccess, fError);
 		oAjax.send();
 
@@ -108,7 +117,8 @@ WDP.dataSrc = function()
 	}
 
 	return {
-		getRouteById : fGetRouteById,
+		getJSONRouteById : fGetJSONRouteById,
+		getKMLRouteById  : fGetKMLRouteById,
 		saveRoute    : fSaveRoute,
 		deleteRoute  : fDeleteRoute,
 		updateRoute  : fUpdateRoute,

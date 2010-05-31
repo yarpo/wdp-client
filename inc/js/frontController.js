@@ -60,9 +60,10 @@ var fronController = function()
 	{
 		var id = fGetIdFromAttr(self.id);
 		// to powinno byc wywolane
-		//oDataSrc.getRouteById(id);
+		var a = oDataSrc.getKMLRouteById(id);
+		//alert(a);
 		var url = fCreateUrlFromId(id);
-		alert('bede odczytywal stad '+ url);
+		//alert('bede odczytywal stad '+ url);
 		oMap.addRoute(url);
 	}
 
@@ -88,9 +89,8 @@ var fronController = function()
 	function fTrackListItemEdit(self)
 	{
 		var id = fGetIdFromAttr(this);
-		//oDataSrc.getRouteById(id, 
-		oView.editor({"id":2,"description":"","name":"Position 1 to Position 396","points":[12,12,12]});
-		return hs.htmlExpand(this, { headingText: 'Lorem ipsum', maincontentId: 'edit_container' });
+		oDataSrc.getJSONRouteById(id, oView.editRoute);
+		return hs.htmlExpand(this, { headingText: 'Edytuj trasę ' + id, maincontentId: 'edit_container' });
 	}
 
 	return {

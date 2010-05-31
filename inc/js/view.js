@@ -2,8 +2,6 @@ WDP.view = function()
 {
 	function fAddItemToList(item, list)
 	{
-alert('jestem tu');
-		
 		var id = 't_' + item.id;
 		list = list || '#track-list .list';
 
@@ -27,10 +25,30 @@ alert('jestem tu');
 	{
 		$('#track-list .list').html('');
 	}
-	
-	function fEditRoute(id)
+
+	function fAddItemToEditorList(item, list)
 	{
-		alert("edytor " + id);
+		list.append('<li>' + item.altitude + ' | ' + item.latitude + ' | ' + item.longitude + '</li>');
+	}
+
+	function fEditRoute(data)
+	{
+		var container = $('#edit_container').html('');
+		var route = data[0];
+		var form = $('<form>').
+			html(
+				'<h4>' + route.name + '</h4>' +
+				'<p>' + route.description + '</p>'
+			).appendTo(container);
+		var list = $('<ul class="editor-list">');
+
+		var n = route.points.length;
+
+		for (var i = 0; i < n; i++)
+		{
+			fAddItemToEditorList(route.points[i], list);
+		}
+		list.appendTo('#edit_container');
 	}
 
 	return {
