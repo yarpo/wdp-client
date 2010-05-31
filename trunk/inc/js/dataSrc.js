@@ -35,7 +35,7 @@ WDP.dataSrc = function()
 
 	function fGetRouteById(id, funcSuccess, funcError)
 	{
-		//var oAjax = ajaxCreator('Tasks/getKml.do?id=' + 1 + '&ftp=http://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_' + 0 + '.kml',
+		//var oAjax = ajaxCreator('Tasks/getKml.do?id=' + 1 + '&ftp=ftp://ftp.republika.pl/studia/wdp/kml/file_' + 0 + '.kml',
 		//	'text', function() {alert('ok') }, funcError);
 		
 

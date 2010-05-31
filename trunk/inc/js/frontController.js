@@ -83,14 +83,13 @@ var fronController = function()
 		oDataSrc.deleteRoute(id);
 		oView.clearListOfRoutes();
 		oDataSrc.getAllRoutes(oView.insertListOfRoutes);
-		alert('usun ' + id)
 	}
 
 	function fTrackListItemEdit(self)
 	{
 		var id = fGetIdFromAttr(this);
 		//oDataSrc.getRouteById(id, 
-		oView.editor({"id":2,"description":"","name":"Position 1 to Position 396","points":[]});
+		oView.editor({"id":2,"description":"","name":"Position 1 to Position 396","points":[12,12,12]});
 		return hs.htmlExpand(this, { headingText: 'Lorem ipsum', maincontentId: 'edit_container' });
 	}
 
