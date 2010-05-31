@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings>
+	<mapping pattern="Tasks/upload.do" controller="com.wdp.web.controllers.UploadController"/>
+	<mapping pattern="Tasks/getKml.do" controller="com.wdp.web.controllers.GetKmlController"/>
+	<mapping pattern="Tasks/getChart.do" controller="com.wdp.web.controllers.GetChartController"/>
+	<mapping pattern="Tasks/daoRpc.do" controller="com.wdp.web.controllers.DaoRpcController"/>
+
+	<mapping pattern="Views/*" controller="com.wdp.web.controllers.IndexController"/>
+
+	<mapping pattern="/*" controller="com.wdp.web.controllers.IndexController" />
+	
+	
+</mappings>

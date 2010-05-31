@@ -1,0 +1,96 @@
+/**
+ * Style css dla projektu na przedmiot WDP
+ * */
+
+.wdp-project * {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: verdana, sans-serif;
+}
+
+.wdp-project ul, li {
+    list-style-type: none;
+}
+
+.wdp-project #map3d {
+    border: 1px solid silver;
+    height: 500px;
+    width: 700px;
+    float: left;
+}
+
+.wdp-project #options {
+    float: left;
+    width: 520px;
+    margin: 0 20px;
+}
+
+.wdp-project .tabs li a {
+    float: left;
+    margin: 0 5px -1px 0;
+    padding: 5px 5px 3px 5px;
+    background: #fafafa;
+}
+.wdp-project .tabs li .active ,
+.wdp-project .tabs li a:hover {
+    padding: 5px;
+    background: #f0f0f0;
+}
+
+.wdp-project .tabs-container {
+    margin: 0 20px 20px 20px;
+}
+
+.wdp-project .tabs-container>h2 {
+    color:#5A3A22;
+    font-size:20px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+.wdp-project .tabs-container>div {
+    clear: both;
+    display: none;
+    background: #f0f0f0;
+}
+
+.wdp-project #track-list .list {
+    padding: 10px 0;
+    overflow: auto;
+    height: 100px;
+	clear: both;
+}
+
+.wdp-project #track-list .list>li {
+    display: block;
+    line-height: 20px;
+    font-size: 11px;
+    padding: 0 10px;
+}
+
+.wdp-project #track-list .list input {
+    position: relative;
+    top: 2px;
+}
+
+.wdp-project #track-list .list>li:hover {
+    background: #e7e7e7;
+    color: #555;
+}
+
+.wdp-project #track-list .list>li>span {
+    visibility: hidden;
+	float: right;
+}
+
+.wdp-project #track-list .list>li:hover>span {
+    visibility: visible;
+}
+
+.wdp-project .tabs-container>div.active {
+    display: block;
+}
+
+.wdp-project #footer {
+    clear: both;
+}
