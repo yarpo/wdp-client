@@ -9,7 +9,7 @@ alert('jestem tu');
 
 		$('<li>').html('<input type="checkbox" id="' + id + 
 			'"><label for="' + id + '"> ' + item.name + '</label> <span>[ <a class="edit" href="#edit_' + item.id + 
-			'" onclick="return aaa(this)">edytuj</a> | <a class="del" href="#delete_' + item.id + 
+			'">edytuj</a> | <a class="del" href="#delete_' + item.id + 
 			'">usuń</a> ]</span>').appendTo('#track-list .list');
 	}
 
@@ -27,9 +27,15 @@ alert('jestem tu');
 	{
 		$('#track-list .list').html('');
 	}
+	
+	function fEditRoute(id)
+	{
+		alert("edytor " + id);
+	}
 
 	return {
 		insertListOfRoutes : fInsertListOfRoutes,
-		clearListOfRoutes  : fClearListOfRoutes
+		clearListOfRoutes  : fClearListOfRoutes,
+		editRoute          : fEditRoute
 	};
 };
