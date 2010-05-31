@@ -89,13 +89,15 @@ var fronController = function()
 	function fTrackListItemEdit(self)
 	{
 		var id = fGetIdFromAttr(this);
-		alert('edycja ' + id)
+		//oDataSrc.getRouteById(id, 
+		oView.editor({"id":2,"description":"","name":"Position 1 to Position 396","points":[]});
+		return hs.htmlExpand(this, { headingText: 'Lorem ipsum', maincontentId: 'edit_container' });
 	}
 
 	return {
 		tracklist_checkbox_change : fTrackListCheckboxChanged,
 		initialize_onload         : fInitializeOnload,
 		tracklist_item_delete     : fTrackListItemDelete,
-		tracklist_item_edit       : fTrackListItemEdit,
+		tracklist_item_edit       : fTrackListItemEdit
 	};
 };
