@@ -43,23 +43,6 @@
 
 <body class="wdp-project">
 
-
-<script>
-function aaa(t)
-{
-	alert(1)
-	return hs.htmlExpand(t, { headingText: 'Lorem ipsum'});
-	
-}
-</script>
-
-<a href="#" onclick="return aaa(this)">
-	Open HTML-content
-</a>
-<div class="highslide-maincontent">Lorem ipsum eterdolor sit amet, consectetuer adipiscing elit. Aliquam dapibus leo quis nisl. In lectus. Vivamus consectetuer pede in nisl. Mauris cursus pretium mauris. Suspendisse condimentum mi ac tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec sed enim. Ut vel ipsum. Cras consequat velit et justo. Donec mollis, mi at tincidunt vehicula, nisl mi luctus risus, quis scelerisque arcu nibh ac nisi. Sed risus. Curabitur urna. Aliquam vitae nisl. Quisque imperdiet semper justo. Pellentesque nonummy pretium tellus.
-</div>
-
-
 	<h1>Projekcja danych</h1>
 
 	<div id="projection">
@@ -183,10 +166,10 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
 }
 // -->
 
-                            </script>
-                            <noscript>
-                                    <p>Wykresy wymagają obsługi JS i wtyczki Adebe Flash.</p>
-                            </noscript>
+			</script>
+			<noscript>
+				<p>Wykresy wymagają obsługi JS i wtyczki Adebe Flash.</p>
+			</noscript>
 			</div> <!-- #h_t -->
 		</div> <!--charts-->
 
@@ -196,6 +179,9 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
 		<p>strona przygotowana na projkekt z WDP. Autorzey: Krzysztof Cygan, Patryk Jar</p>
 	</div>
 
+<div class="highslide-html-content" id="edit_container">
+	<div class="highslide-body"/>
+</div>
 
 
 </body>
