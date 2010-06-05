@@ -22,7 +22,7 @@
 	<script type="text/javascript" src="inc/js/jquery.js"></script>
 	<script type="text/javascript" src="inc/js/ajax.js"></script>
 	<script type="text/javascript" src="inc/js/tabs.plugin.js"></script>
-	
+	<script type="text/javascript" src="inc/js/pointEditor.plugin.js"></script>
 	<script type="text/javascript" src="inc/charts/AC_RunActiveContent.js"></script>
 	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAUmUZlQ5cCSp2E-VNZ4ql_BT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQ_q2TRh-_TwwygGCkVjbV4jyGokg"></script>
 

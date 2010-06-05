@@ -17,7 +17,7 @@ WDP.editorView = function()
 			).appendTo(oContainer);
 
 		olistOfPoints = $('<table>');
-		olistOfPoints.append('<tr><th>Wysokosc</th><th>szerokosc</th><th>dlugosc</th></tr>')
+		olistOfPoints.append('<tr><th>Wysokosc</th><th>szerokosc</th><th>dlugosc</th><th/></tr>')
 
 		var n = route.points.length;
 
@@ -38,6 +38,7 @@ WDP.editorView = function()
 				fCreateInputText('latitude_' + iRouteIndex, item.latitude) + 
 				'</td><td>' + 
 				fCreateInputText('longitude_' + iRouteIndex, item.longitude) + 
+				'</<td><td><input type="button" name="save_' + iRouteIndex + '" style="display: none;" onclick="alert(/zapisuje/)" />' + 
 				'</<td></tr>');
 	}
 	

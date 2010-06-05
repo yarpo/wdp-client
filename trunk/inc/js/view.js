@@ -37,28 +37,14 @@ WDP.view = function()
 
 	function fEditRoute(data)
 	{
-	/*	var container = $('#edit_container').html('');
-		var route = data[0];
-		var form = $('<form>').
-			html(
-				'<h4>' + route.name + '</h4>' +
-				'<p>' + route.description + '</p>'
-			).appendTo(container);
-		var list = $('<table>');
-		list.append('<tr><th>Wysokosc</th><th>szerokosc</th><th>dlugosc</th></tr>')
-
-		var n = route.points.length;
-
-		for (var i = 0; i < n; i++)
-		{
-			fAddItemToEditorList(route.points[i], list);
-		}
-		list.appendTo('#edit_container');
-		*/
 		oEditor.create(data[0]);
 	}
 
-	function fStartEditing
+	function fStartEditing(self)
+	{
+		alert('No to edytujmyu to ' + self.id);
+		$('#' + self.id).pointEditor();
+	}
 
 	return {
 		insertListOfRoutes : fInsertListOfRoutes,
