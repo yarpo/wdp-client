@@ -10,8 +10,8 @@ $(document).ready(
 		$('#track-list input:checkbox').change(controller.tracklist_checkbox_change);
 		$('#track-list a.del').click(controller.tracklist_item_delete);
 		$('#track-list a.edit').click(controller.tracklist_item_edit);
-		$('.point').live('click', controller.route_point_edit);
-		
+		$('.highslide-html-content .point').live('click', controller.route_point_edit);
+		$('.highslide-html-content .save').live('click', controller.route_point_save);
 	}
 );
 
@@ -94,12 +94,18 @@ var fronController = function()
 		oView.startEditing(this);
 	}
 
+	function fRoutePointSave(event)
+	{
+		alert('zapisuje' + self);
+	}
+
 	return {
 		tracklist_checkbox_change : fTrackListCheckboxChanged,
 		initialize_onload         : fInitializeOnload,
 		tracklist_item_delete     : fTrackListItemDelete,
 		tracklist_item_edit       : fTrackListItemEdit,
-		route_point_edit          : fRoutePointEdit
+		route_point_edit          : fRoutePointEdit,
+		route_point_save          : fRoutePointSave
 	};
 };
 

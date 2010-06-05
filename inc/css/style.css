@@ -5,7 +5,7 @@
 .wdp-project * {
     margin: 0;
     padding: 0;
-    border: none;
+   /* border: none;*/
     font-family: verdana, sans-serif;
 }
 
@@ -93,4 +93,19 @@
 
 .wdp-project #footer {
     clear: both;
+}
+
+.wdp-project .highslide-html-content input[type="button"].save
+{
+	background: #eee;
+	color: #999;
+	display: none;
+	border: 1px solid #000;
+	padding: 2px;
+	margin: 0 3px;
+}
+
+.wdp-project .highslide-html-content input[type="button"].save:hover
+{
+	color: #000;
 }
