@@ -42,7 +42,6 @@ WDP.view = function()
 
 	function fStartEditing(self)
 	{
-		alert('No to edytujmyu to ' + self.id);
 		$('#' + self.id).pointEditor();
 	}
 

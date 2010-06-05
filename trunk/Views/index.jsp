@@ -45,6 +45,20 @@
 
 <body class="wdp-project">
 
+
+<script>
+function aaa(a)
+{
+	alert(a.id);
+}
+</script>
+
+<form id="aaaaa" onsubmit="aaa(this)" >
+sadsaddsa
+	<input type="text"/>
+</form>
+
+
 	<h1>Projekcja danych</h1>
 
 	<div id="projection">
@@ -184,6 +198,7 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
 <div class="highslide-html-content" id="edit_container">
 	<div class="highslide-body"/>
 </div>
+
 
 
 </body>

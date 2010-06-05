@@ -38,7 +38,9 @@ WDP.editorView = function()
 				fCreateInputText('latitude_' + iRouteIndex, item.latitude) + 
 				'</td><td>' + 
 				fCreateInputText('longitude_' + iRouteIndex, item.longitude) + 
-				'</<td><td><input type="button" name="save_' + iRouteIndex + '" style="display: none;" onclick="alert(/zapisuje/)" />' + 
+				'</<td><td>' +
+				'<input type="button" name="save_' + iRouteIndex + 
+				'" value="zapisz" class="save" />' + 
 				'</<td></tr>');
 	}
 	
