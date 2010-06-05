@@ -91,11 +91,6 @@ var fronController = function()
 
 	function fRoutePointEdit(event, self)
 	{
-		var s = '';
-		for (var x in self)
-		{
-			s += x + '\t';
-		}
 		oView.startEditing(this);
 	}
 
