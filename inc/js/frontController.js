@@ -1,5 +1,3 @@
-
-
 $(document).ready(
 	function()
 	{
@@ -12,7 +10,8 @@ $(document).ready(
 		$('#track-list input:checkbox').change(controller.tracklist_checkbox_change);
 		$('#track-list a.del').click(controller.tracklist_item_delete);
 		$('#track-list a.edit').click(controller.tracklist_item_edit);
-
+		$('.point').live('click', controller.route_point_edit);
+		
 	}
 );
 
@@ -59,11 +58,8 @@ var fronController = function()
 	function fShowTrack(self)
 	{
 		var id = fGetIdFromAttr(self.id);
-		// to powinno byc wywolane
 		var a = oDataSrc.getKMLRouteById(id);
-		//alert(a);
 		var url = fCreateUrlFromId(id);
-		//alert('bede odczytywal stad '+ url);
 		oMap.addRoute(url);
 	}
 
@@ -90,13 +86,31 @@ var fronController = function()
 	{
 		var id = fGetIdFromAttr(this);
 		oDataSrc.getJSONRouteById(id, oView.editRoute);
-		return hs.htmlExpand(this, { headingText: 'Edytuj trasę ' + id, maincontentId: 'edit_container' });
+		return hs.htmlExpand(this, { headingText: 'Edytuj trasę ' + id, maincontentId: 'edit_' + id });
+	}
+
+	function fRoutePointEdit(event, self)
+	{
+		var s = '';
+		for (var x in self)
+		{
+			s += x + '\t';
+		}
+		oView.startEditing(this);
 	}
 
 	return {
 		tracklist_checkbox_change : fTrackListCheckboxChanged,
 		initialize_onload         : fInitializeOnload,
 		tracklist_item_delete     : fTrackListItemDelete,
-		tracklist_item_edit       : fTrackListItemEdit
+		tracklist_item_edit       : fTrackListItemEdit,
+		route_point_edit          : fRoutePointEdit
 	};
 };
+
+Math.decimal = function(n, k) {
+	var factor = Math.pow(10, k+1);
+	n = Math.round(Math.round(n*factor)/10);
+
+	return n/(factor/10);
+}

@@ -21,7 +21,6 @@
 
 	<script type="text/javascript" src="inc/js/jquery.js"></script>
 	<script type="text/javascript" src="inc/js/ajax.js"></script>
-	<script type="text/javascript" src="inc/js/route.js"></script>
 	<script type="text/javascript" src="inc/js/tabs.plugin.js"></script>
 	
 	<script type="text/javascript" src="inc/charts/AC_RunActiveContent.js"></script>
@@ -35,10 +34,13 @@
 			var WDP = function() {};
 			google.load('maps', '2');
 	</script>
+
 	<script type="text/javascript" src="inc/js/map.js"></script>
+	<script type="text/javascript" src="inc/js/editor.js"></script>
 	<script type="text/javascript" src="inc/js/view.js"></script>
 	<script type="text/javascript" src="inc/js/dataSrc.js"></script>
 	<script type="text/javascript" src="inc/js/frontController.js"></script>
+	
 </head> 
 
 <body class="wdp-project">
