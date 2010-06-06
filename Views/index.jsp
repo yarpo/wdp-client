@@ -49,11 +49,15 @@
 <script>
 function aaa(a)
 {
-	alert(a.id);
+	alert(this.id);
 }
+
+$(document).ready(function() {
+	$('#aaaaa').submit(aaa);
+});
 </script>
 
-<form id="aaaaa" onsubmit="aaa(this)" >
+<form id="aaaaa">
 sadsaddsa
 	<input type="text"/>
 </form>

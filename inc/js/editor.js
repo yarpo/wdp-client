@@ -4,20 +4,18 @@ WDP.editorView = function()
 		sContainer = '#edit_';
 		oContainer = null,
 		olistOfPoints = null,
-		nRouteId = 0;
+		iRouteId = 0;
 
 	function fCreate( route )
 	{
-		nRouteId = route.id;
-		oContainer = $(sContainer + nRouteId).html('');
-		$('<form>').
-			html(
-				'<h4>' + route.name + '</h4>' +
+		iRouteId = route.id;
+		oContainer = $(sContainer + iRouteId).html('');
+		$('<h4>' + route.name + '</h4>' +
 				'<p>' + route.description + '</p><hr />'
 			).appendTo(oContainer);
 
-		olistOfPoints = $('<table>');
-		olistOfPoints.append('<tr><th>Wysokosc</th><th>szerokosc</th><th>dlugosc</th><th/></tr>')
+		olistOfPoints = $('<ul class="editor-list">');
+		olistOfPoints.append('<li><ul class="point-item"><li>wysokość</li><li>szerokość</li><li>długość</li></ul></li>');
 
 		var n = route.points.length;
 
@@ -32,16 +30,16 @@ WDP.editorView = function()
 	{
 		olistOfPoints.
 			append
-			('<tr><td>' + 
+			('<li><form id="edit_route_'+ iRouteId +'" point="'+iRouteIndex+'"><ul class="point-item"><li>' + 
 				fCreateInputText('altitude_' + iRouteIndex, item.altitude) + 
-				'</td><td>' + 
+				'</li><li>' + 
 				fCreateInputText('latitude_' + iRouteIndex, item.latitude) + 
-				'</td><td>' + 
+				'</li><li>' + 
 				fCreateInputText('longitude_' + iRouteIndex, item.longitude) + 
-				'</<td><td>' +
-				'<input type="button" name="save_' + iRouteIndex + 
+				'</li><li>' +
+				'<input type="submit" name="save_' + iRouteIndex + 
 				'" value="zapisz" class="save" />' + 
-				'</<td></tr>');
+				'</li></ul></form></li>');
 	}
 	
 	function fCreateInputText(name, value)

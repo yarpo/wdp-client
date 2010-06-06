@@ -95,7 +95,7 @@
     clear: both;
 }
 
-.wdp-project .highslide-html-content input[type="button"].save
+.wdp-project .highslide-html-content input[type="submit"].save
 {
 	background: #eee;
 	color: #999;
@@ -105,7 +105,19 @@
 	margin: 0 3px;
 }
 
-.wdp-project .highslide-html-content input[type="button"].save:hover
+.wdp-project .highslide-html-content input[type="submit"].save:hover
 {
 	color: #000;
+}
+
+
+.wdp-project .highslide-html-content .editor-list ul.point-item
+{
+	clear: both;
+}
+
+.wdp-project .highslide-html-content .editor-list ul.point-item li
+{
+	float: left;
+	width: 20%;
 }

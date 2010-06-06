@@ -11,7 +11,7 @@ $(document).ready(
 		$('#track-list a.del').click(controller.tracklist_item_delete);
 		$('#track-list a.edit').click(controller.tracklist_item_edit);
 		$('.highslide-html-content .point').live('click', controller.route_point_edit);
-		$('.highslide-html-content .save').live('click', controller.route_point_save);
+		$('.highslide-html-content form').live('submit', controller.route_point_save);
 	}
 );
 
@@ -94,9 +94,33 @@ var fronController = function()
 		oView.startEditing(this);
 	}
 
-	function fRoutePointSave(event)
+	function fRouteSaveEditedPoint(event)
 	{
-		alert('zapisuje' + self);
+		var obj = $(this);
+		var routeId = fGetIdFromAttr(this.id);
+		var pointId = fGetIdFromAttr(obj.find('input:eq(0)"').attr('id'));
+		var alt = fGetInputValue(obj.find('input:eq(0)"'));
+		var lat = fGetInputValue(obj.find('input:eq(1)"'));
+		var lng = fGetInputValue(obj.find('input:eq(2)"'));
+
+		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+"}";
+		oDataSrc.updatePoint(routeId, pointId, point);
+
+		obj.find('ul.point-item').pointEditor('close');
+
+		return false;
+	}
+
+	function fGetInputValue(element)
+	{
+		var value = element.val();
+		var title = element.attr('title');
+		if (value == Math.decimal(title, 2))
+		{
+			return title; // wartosc nie zostala zmieniona
+		}
+
+		return value;
 	}
 
 	return {
@@ -105,7 +129,7 @@ var fronController = function()
 		tracklist_item_delete     : fTrackListItemDelete,
 		tracklist_item_edit       : fTrackListItemEdit,
 		route_point_edit          : fRoutePointEdit,
-		route_point_save          : fRoutePointSave
+		route_point_save          : fRouteSaveEditedPoint
 	};
 };
 

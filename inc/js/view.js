@@ -30,11 +30,6 @@ WDP.view = function()
 		$('#track-list .list').html('');
 	}
 
-	function fAddItemToEditorList(item, list)
-	{
-		list.append('<tr><td>' + item.altitude + '</td><td>' + item.latitude + '</td><td>' + item.longitude + '</<td></tr>');
-	}
-
 	function fEditRoute(data)
 	{
 		oEditor.create(data[0]);
