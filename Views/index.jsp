@@ -45,24 +45,6 @@
 
 <body class="wdp-project">
 
-
-<script>
-function aaa(a)
-{
-	alert(this.id);
-}
-
-$(document).ready(function() {
-	$('#aaaaa').submit(aaa);
-});
-</script>
-
-<form id="aaaaa">
-sadsaddsa
-	<input type="text"/>
-</form>
-
-
 	<h1>Projekcja danych</h1>
 
 	<div id="projection">

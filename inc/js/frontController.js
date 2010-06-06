@@ -11,7 +11,8 @@ $(document).ready(
 		$('#track-list a.del').click(controller.tracklist_item_delete);
 		$('#track-list a.edit').click(controller.tracklist_item_edit);
 		$('.highslide-html-content .point').live('click', controller.route_point_edit);
-		$('.highslide-html-content form').live('submit', controller.route_point_save);
+		$('.highslide-html-content .add-point').live('click', controller.route_add_point);
+		$('.highslide-html-content form.edit').live('submit', controller.route_point_save);
 	}
 );
 
@@ -102,8 +103,9 @@ var fronController = function()
 		var alt = fGetInputValue(obj.find('input:eq(0)"'));
 		var lat = fGetInputValue(obj.find('input:eq(1)"'));
 		var lng = fGetInputValue(obj.find('input:eq(2)"'));
+		var time = obj.find('li:eq(3) span.time').html();
 
-		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+"}";
+		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", time : " + time + "}";
 		oDataSrc.updatePoint(routeId, pointId, point);
 
 		obj.find('ul.point-item').pointEditor('close');
@@ -115,12 +117,24 @@ var fronController = function()
 	{
 		var value = element.val();
 		var title = element.attr('title');
-		if (value == Math.decimal(title, 2))
+		if (value == Math.decimal(title, 3))
 		{
 			return title; // wartosc nie zostala zmieniona
 		}
 
 		return value;
+	}
+
+	function fGenerateIdForNewPoint(id)
+	{
+		id = fGetIdFromAttr(id);
+		return (id * 1) + 1;
+	}
+
+	function fRouteAddFormForNewPoint(event)
+	{
+		var id = fGenerateIdForNewPoint(this.name);
+		oView.addNewPoint(id, $(this).parent().parent().parent().parent());
 	}
 
 	return {
@@ -129,7 +143,8 @@ var fronController = function()
 		tracklist_item_delete     : fTrackListItemDelete,
 		tracklist_item_edit       : fTrackListItemEdit,
 		route_point_edit          : fRoutePointEdit,
-		route_point_save          : fRouteSaveEditedPoint
+		route_point_save          : fRouteSaveEditedPoint,
+		route_add_point           : fRouteAddFormForNewPoint
 	};
 };
 

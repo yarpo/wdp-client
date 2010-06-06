@@ -39,11 +39,17 @@ WDP.view = function()
 	{
 		$('#' + self.id).pointEditor();
 	}
+	
+	function fAddNewPoint(id, node)
+	{
+		oEditor.createAddEditor(id, node);
+	}
 
 	return {
 		insertListOfRoutes : fInsertListOfRoutes,
 		clearListOfRoutes  : fClearListOfRoutes,
 		editRoute          : fEditRoute,
-		startEditing       : fStartEditing
+		startEditing       : fStartEditing,
+		addNewPoint        : fAddNewPoint
 	};
 };
