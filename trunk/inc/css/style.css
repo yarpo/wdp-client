@@ -95,17 +95,16 @@
     clear: both;
 }
 
-.wdp-project .highslide-html-content input[type="submit"].save
+.wdp-project .highslide-html-content input[type="submit"].update-point
 {
 	background: #eee;
 	color: #999;
 	display: none;
-	border: 1px solid #000;
 	padding: 2px;
 	margin: 0 3px;
 }
 
-.wdp-project .highslide-html-content input[type="submit"].save:hover
+.wdp-project .highslide-html-content input[type="submit"].update-point:hover
 {
 	color: #000;
 }
@@ -127,7 +126,8 @@
 	display: none;
 }
 
-.wdp-project .highslide-html-content .editor-list hr
+.wdp-project .highslide-html-content .editor-list .time-settings
 {
 	clear: both;
+	display: none;
 }

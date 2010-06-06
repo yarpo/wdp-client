@@ -21,7 +21,8 @@ WDP.editorView = function()
 
 		for (iRouteIndex = 0; iRouteIndex < n; iRouteIndex++)
 		{
-			fAddItemToEditorList(route.points[iRouteIndex]);
+			//fAddItemToEditorList(route.points[iRouteIndex]);
+			olistOfPoints.append('<li>' + fGenerateEditorCode('edit', route.points[iRouteIndex]) + '</li>');
 		}
 		olistOfPoints.appendTo(oContainer);
 	}
@@ -36,25 +37,6 @@ WDP.editorView = function()
 		s = s.substr(0, s.length-1) + '}';
 		return (s);
 	}
-
-	function fAddItemToEditorList(item)
-	{
-		var time = fSerializeTimeObject(item.time);
-		olistOfPoints.
-			append
-			('<li><form id="edit_route_'+ iRouteId +'" class="edit" point="'+iRouteIndex+'"><ul class="point-item"><li>' + 
-				fCreateInputText('altitude_' + iRouteIndex, item.altitude) + 
-				'</li><li>' + 
-				fCreateInputText('latitude_' + iRouteIndex, item.latitude) + 
-				'</li><li>' + 
-				fCreateInputText('longitude_' + iRouteIndex, item.longitude) + 
-				'</li><li>' +
-				'<input type="submit" name="save_' + iRouteIndex + 
-				'" value="zapisz" class="save" />' + 
-				'<input type="button" name="add_' + iRouteIndex + 
-				'" value="+" class="add-point" /><span class="time">' + time + '</span>' +
-				'</li></ul></form></li>');
-	}
 	
 	function fCreateInputText(name, value)
 	{
@@ -63,8 +45,48 @@ WDP.editorView = function()
 	
 	function fCreateAddingEditor(id, node)
 	{
-		$('<li><form style="background : red" class="add" id="add_route_'+id+'">' +
-			'<ul class="point-item"><li><input type="text" value="nowy" title="46.029" id="altitude_5" name="altitude_5" size="5" class="point"></li><li><input type="text" value="nowy" title="41.98" id="latitude_5" name="latitude_5" size="5" class="point"></li><li><input type="text" value="nowy" title="-71.12" id="longitude_5" name="longitude_5" size="5" class="point"></li><li><input type="submit" class="save" value="zapisz" name="save_5"><input type="button" class="add-point" value="+" name="add_5"><span class="time">{time:0,minutes:0,seconds:0,hours:1,month:0,year:70,timezoneOffset:-60,day:4,date:1}</span></li></ul><hr />Tu jeszcze time</form></li>').insertAfter(node);
+		var mock = {altitude : 'nowy', latitude : 'nowy', longitude : '', time : {time:{}}};
+		$('<li>' + fGenerateEditorCode('add', mock) + '</li>').insertAfter(node);
+	}
+
+	function fGenerateEditorCode(className, item)
+	{
+		var time = fSerializeTimeObject(item.time);
+
+		var c = '<form class="' + className + '">';
+				c += '<ul class="point-item">';
+					c+= '<li>';
+						c+= fCreateInputText('altitude_' + iRouteIndex, item.altitude);
+					c+= '</li>';
+					c+= '<li>';
+						c+= fCreateInputText('latitude_' + iRouteIndex, item.latitude);
+					c+= '</li>';
+					c+= '<li>';
+						c+= fCreateInputText('longitude_' + iRouteIndex, item.longitude);
+					c+= '</li>';
+					c+= '<li>';
+						c+= '<input type="submit" class="update-point" value="zapisz" name="save_' + iRouteIndex + '">';
+						c+= '<input type="button" class="add-point" value="+" name="add_' + iRouteIndex + '">';
+						c+= '<input type="button" class="edit-time" value="więcej" name="time_' + iRouteIndex + '">';
+						c+= '<span class="time">' + time + '</span>'
+					c+= '</li>';
+					c+= '<li class="time-settings">';
+						c+= 'time' + fCreateInputText('time_' + iRouteIndex, item.time["time"]) + '<br />';
+						c+= 'minutes' + fCreateInputText('time_' + iRouteIndex, item.time["minutes"]) + '<br />';
+						c+= 'seconds' + fCreateInputText('time_' + iRouteIndex, item.time["seconds"]) + '<br />';
+						c+= 'hours' + fCreateInputText('time_' + iRouteIndex, item.time["hours"]) + '<br />';
+						c+= 'month' + fCreateInputText('time_' + iRouteIndex, item.time["month"]) + '<br />';
+						c+= 'year' + fCreateInputText('time_' + iRouteIndex, item.time["year"]) + '<br />';
+						c+= 'timezoneOffset' + fCreateInputText('time_' + iRouteIndex, item.time["timezoneOffset"]) + '<br />';
+						c+= 'day' + fCreateInputText('time_' + iRouteIndex, item.time["day"]) + '<br />';
+						c+= 'month' + fCreateInputText('time_' + iRouteIndex, item.time["month"]) + '<br />';
+						c+= 'date' + fCreateInputText('time_' + iRouteIndex, item.time["date"]) + '<br />';
+					c+= '</li>';
+				c+= '</ul>';
+			c += '</form>';
+
+			console.log(c);
+			return c;
 	}
 
 	return {

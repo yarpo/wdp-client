@@ -45,11 +45,17 @@ WDP.view = function()
 		oEditor.createAddEditor(id, node);
 	}
 
+	function fShowTimeEditor(node)
+	{
+		node.slideDown(1000);
+	}
+
 	return {
 		insertListOfRoutes : fInsertListOfRoutes,
 		clearListOfRoutes  : fClearListOfRoutes,
 		editRoute          : fEditRoute,
 		startEditing       : fStartEditing,
-		addNewPoint        : fAddNewPoint
+		addNewPoint        : fAddNewPoint,
+		showTimeEditor    : fShowTimeEditor
 	};
 };
