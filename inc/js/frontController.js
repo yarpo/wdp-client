@@ -12,6 +12,7 @@ $(document).ready(
 		$('#track-list a.edit').click(controller.tracklist_item_edit);
 		$('.highslide-html-content .point').live('click', controller.route_point_edit);
 		$('.highslide-html-content .add-point').live('click', controller.route_add_point);
+		$('.highslide-html-content .edit-time').live('click', controller.show_points_time_editor);
 		$('.highslide-html-content form.edit').live('submit', controller.route_point_save);
 	}
 );
@@ -137,6 +138,11 @@ var fronController = function()
 		oView.addNewPoint(id, $(this).parent().parent().parent().parent());
 	}
 
+	function fShowPointsTimeEditor()
+	{
+		oView.showTimeEditor($(this).parent().next());
+	}
+
 	return {
 		tracklist_checkbox_change : fTrackListCheckboxChanged,
 		initialize_onload         : fInitializeOnload,
@@ -144,7 +150,8 @@ var fronController = function()
 		tracklist_item_edit       : fTrackListItemEdit,
 		route_point_edit          : fRoutePointEdit,
 		route_point_save          : fRouteSaveEditedPoint,
-		route_add_point           : fRouteAddFormForNewPoint
+		route_add_point           : fRouteAddFormForNewPoint,
+		show_points_time_editor   : fShowPointsTimeEditor
 	};
 };
 
