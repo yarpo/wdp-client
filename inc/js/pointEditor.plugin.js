@@ -8,27 +8,37 @@
 (function($) {
 	$.fn.extend({ 
 
-		pointEditor: function(options) {
-
-			//var options = $.extend(defaults, options);
-
+		pointEditor: function(option) {
 
 			return this.each(function() {
 
-				var tr = $(this).parent().parent();
-				tr.
-					find('input[type^="bu"]').fadeIn(2000).
-					end().
-					find('input[type^="te"]').each(function() {
-						var self = $(this);
-						self.
-							css({background: '#ddd'}).
-							focus(function() { this.value = this.title; }).
-							blur(function() { 
-								this.value = Math.decimal(this.value, 3);
-							});
-					});
-					
+				if ('close' == option)
+				{
+					$(this).
+						find('input[type^="su"]').fadeOut(2000).
+						end().
+						find('input[type^="te"]').each(function() {
+							this.title = this.value;
+							this.value = Math.decimal(this.value, 3);
+							$(this).css({background: '#fff'})
+						});
+				}
+				else
+				{
+					$(this).parent().parent().
+						find('input[type^="su"]').fadeIn(2000).
+						end().
+						find('input[type^="te"]').each(function() {
+							var self = $(this);
+							self.
+								css({background: '#ddd'}).
+								focus(function() { this.value = this.title; }).
+								blur(function() { 
+									this.value = Math.decimal(this.value, 3);
+								});
+						});
+				}
+				
 			});
 		}
 	});
