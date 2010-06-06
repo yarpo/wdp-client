@@ -121,3 +121,13 @@
 	float: left;
 	width: 20%;
 }
+
+.wdp-project .highslide-html-content .editor-list ul.point-item span.time
+{
+	display: none;
+}
+
+.wdp-project .highslide-html-content .editor-list hr
+{
+	clear: both;
+}
