@@ -141,6 +141,15 @@ var fronController = function()
 	function fShowPointsTimeEditor()
 	{
 		oView.showTimeEditor($(this).parent().next());
+		$('.datepicker').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				showOtherMonths: true,
+				selectOtherMonths: true
+		}).click(function() {
+			$('#ui-datepicker-div').css({'z-index' : 100000000});
+		}); 
+		
 	}
 
 	return {

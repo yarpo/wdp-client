@@ -21,7 +21,6 @@ WDP.editorView = function()
 
 		for (iRouteIndex = 0; iRouteIndex < n; iRouteIndex++)
 		{
-			//fAddItemToEditorList(route.points[iRouteIndex]);
 			olistOfPoints.append('<li>' + fGenerateEditorCode('edit', route.points[iRouteIndex]) + '</li>');
 		}
 		olistOfPoints.appendTo(oContainer);
@@ -45,8 +44,10 @@ WDP.editorView = function()
 	
 	function fCreateAddingEditor(id, node)
 	{
-		var mock = {altitude : 'nowy', latitude : 'nowy', longitude : '', time : {time:{}}};
+		var mock = {altitude : '0', latitude : '0', longitude : '', time : {time:{}}};
 		$('<li>' + fGenerateEditorCode('add', mock) + '</li>').insertAfter(node);
+
+
 	}
 
 	function fGenerateEditorCode(className, item)
@@ -71,22 +72,46 @@ WDP.editorView = function()
 						c+= '<span class="time">' + time + '</span>'
 					c+= '</li>';
 					c+= '<li class="time-settings">';
-						c+= 'time' + fCreateInputText('time_' + iRouteIndex, item.time["time"]) + '<br />';
-						c+= 'minutes' + fCreateInputText('time_' + iRouteIndex, item.time["minutes"]) + '<br />';
-						c+= 'seconds' + fCreateInputText('time_' + iRouteIndex, item.time["seconds"]) + '<br />';
-						c+= 'hours' + fCreateInputText('time_' + iRouteIndex, item.time["hours"]) + '<br />';
-						c+= 'month' + fCreateInputText('time_' + iRouteIndex, item.time["month"]) + '<br />';
-						c+= 'year' + fCreateInputText('time_' + iRouteIndex, item.time["year"]) + '<br />';
-						c+= 'timezoneOffset' + fCreateInputText('time_' + iRouteIndex, item.time["timezoneOffset"]) + '<br />';
-						c+= 'day' + fCreateInputText('time_' + iRouteIndex, item.time["day"]) + '<br />';
-						c+= 'month' + fCreateInputText('time_' + iRouteIndex, item.time["month"]) + '<br />';
-						c+= 'date' + fCreateInputText('time_' + iRouteIndex, item.time["date"]) + '<br />';
+						c+= '<table class="time"><tr>';
+							c+= '<td class="date">';
+							c+= 'data: <input name="date_'+iRouteIndex+'" type="text" class="datepicker" value="' + fGenerateFormattedDate(item.time) + '" /></td>';
+							c+= '<td class="hour">';
+							c+= 'godzina: ' + fGenerateSelect('hours_'+iRouteIndex, 0, 23, item.time["hours"]);
+							c+= fGenerateSelect('minutes_'+iRouteIndex, 0, 59, item.time["minutes"]);
+							c+= fGenerateSelect('seconds_'+iRouteIndex, 0, 59, item.time["seconds"]);
+							c+= '</td></tr></table>';
 					c+= '</li>';
 				c+= '</ul>';
 			c += '</form>';
 
-			console.log(c);
 			return c;
+	}
+
+	function fGenerateSelect(name, start, stop, selected)
+	{
+		var c = '<select name="'+ name +'" id="'+ name +'">';
+		for(var i = start; i <= stop; i++)
+		{
+			c+= '<option value="'+i+'"';
+			if (selected == i)
+			{
+				c+= ' selected="selected" ';
+			}
+			c+= ' >' + i + '</option>';
+		}
+		c+= '</select>';
+
+		return c;
+	}
+
+	function fGenerateFormattedDate(date)
+	{
+		var date = new Date();
+		var d  = date.getDate();
+		var m = date.getMonth() + 1;
+		var yy = date.getYear();
+		var y = (yy < 1000) ? yy + 1900 : yy;
+		return (date.day || d) + '/' + (date.month || m) + '/' + (date.year || y);
 	}
 
 	return {

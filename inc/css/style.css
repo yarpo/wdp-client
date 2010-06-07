@@ -131,3 +131,20 @@
 	clear: both;
 	display: none;
 }
+
+.wdp-project .highslide-html-content .editor-list .time-settings .time
+{
+	vertical-align: top;
+	width: 350px;
+}
+
+.wdp-project .highslide-html-content .editor-list .time-settings .time .hour input
+{
+	width: 30px;
+	display: inline;
+}
+
+.wdp-project .highslide-html-content .editor-list .time-settings .time .datepicker
+{
+	width: 80px;
+}
