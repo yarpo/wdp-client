@@ -113,7 +113,7 @@ var frontController = function()
 			.minutes(parseInt(time.find('select:eq(1)').val()))
 			.seconds(parseInt(time.find('select:eq(2)').val()));
 
-		var res = 'timestamp:' + timer.timestamp() + ', time:' + timer.getJSON();
+		var res = 'timestamp:' + timer.timestamp(); // + ', time:' + timer.getJSON();
 		return res;
 	}
 
