@@ -6,7 +6,7 @@
 	<title>Wizualizacja Danych Przestrzennych - projekt</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-	<link rel="stylesheet" href="inc/css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="/backend-0.0.1-SNAPSHOT/inc/css/style.css" type="text/css"/>
 	<link type="text/css" href="inc/css/themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="inc/highslide/highslide.css" />
 
@@ -100,9 +100,9 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
 			'width', '480',
 			'height', '300',
 			'bgcolor', '#000000',
-			'movie', 'charts',
-			'src', 'inc/charts/charts',
-			'FlashVars', 'library_path=inc/charts/charts_library&xml_source=inc/charts/mock/sample2.xml',
+			'movie', '/backend-0.0.1-SNAPSHOT/charts',
+			'src', '/backend-0.0.1-SNAPSHOT/inc/charts/charts',
+			'FlashVars', 'library_path=/backend-0.0.1-SNAPSHOT/inc/charts/charts_library&xml_source=/backend-0.0.1-SNAPSHOT/inc/charts/mock/sample.xml',
 			'wmode', 'opaque',
 			'scale', 'noScale',
 			'id', 'charts',

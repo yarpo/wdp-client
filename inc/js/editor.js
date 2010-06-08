@@ -46,14 +46,15 @@ WDP.editorView = function()
 	{
 		var mock = {altitude : '0', latitude : '0', longitude : '', time : {time:{}}};
 		$('<li>' + fGenerateEditorCode('add', mock) + '</li>').insertAfter(node);
-
-
 	}
 
 	function fGenerateEditorCode(className, item)
 	{
 		var time = fSerializeTimeObject(item.time);
-
+if (className == 'add')
+{
+	
+}
 		var c = '<form class="' + className + '"  id="'+ className +'_' + iRouteId + '">';
 				c += '<ul class="point-item">';
 					c+= '<li>';
@@ -105,26 +106,15 @@ WDP.editorView = function()
 		return c;
 	}
 
-	function fGenerateFormattedDate(date)
+	function fGenerateFormattedDate(time)
 	{
 		var date = new Date();
 		var d  = date.getDate();
-		if (date.day !== undefined)
-		{
-			d = date.day;
-		}
 		var m = date.getMonth() + 1;
-		if (date.month !== undefined)
-		{
-			m = date.month;
-		}
-		var yy = date.getYear();
-		var y = (yy < 1000) ? yy + 1900 : yy;
-		if (date.year !== undefined)
-		{
-			y = date.year;
-		}
-		return d + '/' + m + '/' + y;
+		var tmp = date.getYear();
+		var y = (tmp < 1000) ? tmp + 1900 : tmp;
+
+		return (time.day || d) + '/' + (time.month || m) + '/' + (time.year || y);
 	}
 
 	return {

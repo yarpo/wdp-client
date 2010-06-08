@@ -78,19 +78,9 @@ WDP.point = function()
 
 	function fGenerateJSON() 
 	{
-		var c = '{"time":';
-		/*
-				c+= '{"time":' + oTime.time + ',';
-				c+= '"minutes":' + oTime.minutes + ',';
-				c+= '"seconds":' + oTime.seconds + ',';
-				c+= '"hours":' + oTime.hours + ',';
-				c+= '"month":' + oTime.month + ',';
-				c+= '"year":' + oTime.year + ',';
-				c+= '"timezoneOffset":' + oTime.timezoneOffset + ',';
-				c+= '"day":' + oTime.day + ',';
-				c+= '"date":' + oTime.date + '},';
-		*/
-			c+= oTime.getJSON() + ',';
+		var c = '{';
+			c+= '"time":';
+				c+= oTime.getJSON() + ',';
 			c+= '"speed":' + nSpeed + ',';
 			c+= '"altitude":' + nAlt + ',';
 			c+= '"longitude":' + nLng + ',';
@@ -186,9 +176,15 @@ WDP.time = function()
 		return nYear;
 	}
 
+	function fTimestamp()
+	{
+		return (new Date(nYear, nMonth, nDay, nHours, nMinutes, nSeconds)).getTime();
+	}
+
 	function fGenerateJSON() 
 	{
 		var c= '{';
+			c+= '"time":' + fTimestamp() + ',';
 			c+= '"minutes":' + nMinutes + ',';
 			c+= '"seconds":' + nSeconds + ',';
 			c+= '"hours":' + nHours + ',';
