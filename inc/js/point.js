@@ -4,7 +4,7 @@
 
 WDP.point = function()
 {
-	var oTime = {},
+	var oTime = WDP.time(),
 		nSpeed = undefined,
 		nAlt = undefined,
 		nLng = undefined,
@@ -63,7 +63,11 @@ WDP.point = function()
 	{
 		if (fIsSetter(obj))
 		{
-			oTime = obj;
+			oTime.minutes(obj.minutes)
+				.seconds(obj.seconds)
+				.hours(obj.hours)
+				.month(obj.month)
+				.year(obj.year);
 			return obj;
 		}
 
@@ -75,6 +79,7 @@ WDP.point = function()
 	function fGenerateJSON() 
 	{
 		var c = '{"time":';
+		/*
 				c+= '{"time":' + oTime.time + ',';
 				c+= '"minutes":' + oTime.minutes + ',';
 				c+= '"seconds":' + oTime.seconds + ',';
@@ -84,6 +89,8 @@ WDP.point = function()
 				c+= '"timezoneOffset":' + oTime.timezoneOffset + ',';
 				c+= '"day":' + oTime.day + ',';
 				c+= '"date":' + oTime.date + '},';
+		*/
+			c+= oTime.getJSON() + ',';
 			c+= '"speed":' + nSpeed + ',';
 			c+= '"altitude":' + nAlt + ',';
 			c+= '"longitude":' + nLng + ',';
@@ -105,14 +112,12 @@ WDP.point = function()
 	return obj;
 };
 
-WDP.time = function() {
-	
-	// TODO: jesli kiedys beda mozliwe do edycji - to pozostale pola 
-	
+WDP.time = function() 
+{
 	var nMinutes  = undefined,
 		nSeconds  = undefined,
 		nHours    = undefined,
-		nMounth   = undefined,
+		nMonth   = undefined,
 		nYear     = undefined;
 	
 	function fIsSetter(val)
@@ -127,7 +132,6 @@ WDP.time = function() {
 			nMinutes = val;
 			return obj;
 		}
-
 		return nMinutes;
 	}
 	
@@ -138,7 +142,6 @@ WDP.time = function() {
 			nSeconds = val;
 			return obj;
 		}
-
 		return nSeconds;
 	}
 	
@@ -149,7 +152,6 @@ WDP.time = function() {
 			nHours = val;
 			return obj;
 		}
-
 		return nHours;
 	}
 	
@@ -157,11 +159,10 @@ WDP.time = function() {
 	{
 		if (fIsSetter(val))
 		{
-			nMounth = val;
+			nMonth = val;
 			return obj;
 		}
-
-		return nMounth;
+		return nMonth;
 	}
 	
 	function fYear( val )
@@ -171,16 +172,28 @@ WDP.time = function() {
 			nYear = val;
 			return obj;
 		}
-
 		return nYear;
 	}
 
+	function fGenerateJSON() 
+	{
+		var c= '{';
+			c+= '"minutes":' + nMinutes + ',';
+			c+= '"seconds":' + nSeconds + ',';
+			c+= '"hours":' + nHours + ',';
+			c+= '"month":' + nMonth + ',';
+			c+= '"year":' + nYear;
+			c+= '}';
+		return c;
+	}
+
 	var obj = {
-		minutes : fMinutes;
+		minutes : fMinutes,
 		seconds : fSeconds,
 		hours   : fHours,
 		month   : fMonth,
 		year    : fYear,
+		getJSON : fGenerateJSON
 	};
 
 	return obj;

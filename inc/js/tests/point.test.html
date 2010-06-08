@@ -50,7 +50,7 @@
 			var p = WDP.point();
 			var res = 10;
 			p.latitude(res).speed(res).altitude(10).longitude(10).time({"time":0,"minutes":0,"seconds":0,"hours":1,"month":0,"year":70,"timezoneOffset":-60,"day":4,"date":1});
-			equals( p.getJSON(), '{"time":{"time":0,"minutes":0,"seconds":0,"hours":1,"month":0,"year":70,"timezoneOffset":-60,"day":4,"date":1},"speed":10,"altitude":10,"longitude":10,"latitude":10}', "KOD JSON" );
+			equals( p.getJSON(), '{"time":{"minutes":0,"seconds":0,"hours":1,"month":0,"year":70},"speed":10,"altitude":10,"longitude":10,"latitude":10}', "KOD JSON" );
 		});
 	});
 	var WDP = {};

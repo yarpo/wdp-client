@@ -69,6 +69,7 @@ WDP.editorView = function()
 						c+= '<input type="submit" class="submit-point" value="zapisz" name="'+ className +'_' + iRouteIndex + '">';
 						c+= '<input type="button" class="add-new-point" value="+" name="add_' + iRouteIndex + '">';
 						c+= '<input type="button" class="edit-time" value="więcej" name="time_' + iRouteIndex + '">';
+						c+= '<input type="button" class="delete-point" value="-" name="del_' + iRouteIndex + '">';
 						c+= '<span class="time">' + time + '</span>'
 					c+= '</li>';
 					c+= '<li class="time-settings">';
