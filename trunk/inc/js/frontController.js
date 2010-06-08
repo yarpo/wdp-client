@@ -101,7 +101,7 @@ var frontController = function()
 	function fGetTimeValues(form)
 	{
 		var id = fGetIdFromAttr(form.attr('id'));
-		alert(id);
+
 		time = form.find('.time-settings');
 		var dateStr = time.find('input:eq(0)').val();
 		var timer = WDP.time();
@@ -184,7 +184,19 @@ var frontController = function()
 
 	function fRouteSaveNewPoint(event)
 	{
-		alert(event);
+		var obj = $(this);
+		var routeId = fGetIdFromAttr(this.id);
+		var pointId = fGetIdFromAttr(obj.find('input:eq(0)"').attr('id'));
+		var alt = fGetInputValue(obj.find('input:eq(0)"'));
+		var lat = fGetInputValue(obj.find('input:eq(1)"'));
+		var lng = fGetInputValue(obj.find('input:eq(2)"'));
+		var time = fGetTimeValues(obj);
+		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", time : " + time + "}";
+		oDataSrc.addPoint(routeId, pointId, point);
+
+		alert(point);
+
+		obj.find('ul.point-item').pointEditor('close');
 		return false;
 	}
 
@@ -194,7 +206,6 @@ var frontController = function()
 		{
 			var pointId = fGetIdFromAttr(this.name);
 			var routeId = fGetIdFromAttr(fGetAncestor($(this), 6).attr('id'));
-			alert(pointId + ' ' + routeId);
 			var res = oDataSrc.deletePoint(routeId, pointId);
 			if (res)
 			{

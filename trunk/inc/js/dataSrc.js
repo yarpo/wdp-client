@@ -91,7 +91,7 @@ WDP.dataSrc = function()
 
 	function fAddPoint(routeId, pointId, point, fSuccess, fError)
 	{
-		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=addPoint&args=[' + routeId + ']',
+		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=addPoint&args=[' + routeId + ',' + pointId + ', ' + point + ']',
 			'json', fSuccess, fError);
 		oAjax.send();
 
