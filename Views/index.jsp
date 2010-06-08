@@ -40,6 +40,7 @@
 	<script type="text/javascript" src="inc/js/view.js"></script>
 	<script type="text/javascript" src="inc/js/dataSrc.js"></script>
 	<script type="text/javascript" src="inc/js/frontController.js"></script>
+	<script type="text/javascript" src="inc/js/time.js"></script>
 	<script type="text/javascript" src="inc/js/point.js"></script>
 	<script type="text/javascript" src="inc/js/ui/jquery.ui.core.js"></script>
 	<script type="text/javascript" src="inc/js/ui/jquery.ui.datepicker.js"></script>

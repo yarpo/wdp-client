@@ -53,7 +53,7 @@ WDP.editorView = function()
 		var time = fSerializeTimeObject(item.time);
 if (className == 'add')
 {
-	
+//	alert()
 }
 		var c = '<form class="' + className + '"  id="'+ className +'_' + iRouteId + '">';
 				c += '<ul class="point-item">';
@@ -111,8 +111,7 @@ if (className == 'add')
 		var date = new Date();
 		var d  = date.getDate();
 		var m = date.getMonth() + 1;
-		var tmp = date.getYear();
-		var y = (tmp < 1000) ? tmp + 1900 : tmp;
+		var tmp = date.getFullYear();
 
 		return (time.day || d) + '/' + (time.month || m) + '/' + (time.year || y);
 	}
