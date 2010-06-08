@@ -50,11 +50,11 @@ WDP.editorView = function()
 
 	function fGenerateEditorCode(className, item)
 	{
-		var time = fSerializeTimeObject(item.time);
-if (className == 'add')
-{
-//	alert()
-}
+		var time = '';//fSerializeTimeObject(item.time);
+
+		var oTime = WDP.time();
+		oTime.timestamp(item.timestamp);
+
 		var c = '<form class="' + className + '"  id="'+ className +'_' + iRouteId + '">';
 				c += '<ul class="point-item">';
 					c+= '<li>';
@@ -76,11 +76,11 @@ if (className == 'add')
 					c+= '<li class="time-settings">';
 						c+= '<table class="time"><tr>';
 							c+= '<td class="date">';
-							c+= 'data: <input name="date_'+iRouteIndex+'" type="text" class="datepicker" value="' + fGenerateFormattedDate(item.time) + '" /></td>';
+							c+= 'data: <input name="date_'+iRouteIndex+'" type="text" class="datepicker" value="' + fGenerateFormattedDate(oTime) + '" /></td>';
 							c+= '<td class="hour">';
-							c+= 'godzina: ' + fGenerateSelect('hours_'+iRouteIndex, 0, 23, item.time["hours"]);
-							c+= fGenerateSelect('minutes_'+iRouteIndex, 0, 59, item.time["minutes"]);
-							c+= fGenerateSelect('seconds_'+iRouteIndex, 0, 59, item.time["seconds"]);
+							c+= 'godzina: ' + fGenerateSelect('hours_'+iRouteIndex, 0, 23, oTime.hours());
+							c+= fGenerateSelect('minutes_'+iRouteIndex, 0, 59, oTime.minutes());
+							c+= fGenerateSelect('seconds_'+iRouteIndex, 0, 59, oTime.seconds());
 							c+= '</td></tr></table>';
 					c+= '</li>';
 				c+= '</ul>';
@@ -106,14 +106,15 @@ if (className == 'add')
 		return c;
 	}
 
-	function fGenerateFormattedDate(time)
+	function fGenerateFormattedDate(t)
 	{
+		
 		var date = new Date();
 		var d  = date.getDate();
 		var m = date.getMonth() + 1;
 		var tmp = date.getFullYear();
 
-		return (time.day || d) + '/' + (time.month || m) + '/' + (time.year || y);
+		return (t.day() || d) + '/' + (t.month() || m) + '/' + (t.year() || y);
 	}
 
 	return {

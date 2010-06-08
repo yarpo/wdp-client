@@ -77,7 +77,6 @@ WDP.time = function()
 	{
 		if (fIsSetter(sec))
 		{
-			alert(sec)
 			var date = new Date( sec );
 			nYear = date.getFullYear();
 			nMonth = date.getMonth();
