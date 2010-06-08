@@ -117,7 +117,8 @@ WDP.time = function()
 	var nMinutes  = undefined,
 		nSeconds  = undefined,
 		nHours    = undefined,
-		nMonth   = undefined,
+		nDay      = undefined,
+		nMonth    = undefined,
 		nYear     = undefined;
 	
 	function fIsSetter(val)
@@ -155,6 +156,16 @@ WDP.time = function()
 		return nHours;
 	}
 	
+	function fDay( val )
+	{
+		if (fIsSetter(val))
+		{
+			nDay = val;
+			return obj;
+		}
+		return nDay;
+	}
+	
 	function fMonth( val )
 	{
 		if (fIsSetter(val))
@@ -181,6 +192,7 @@ WDP.time = function()
 			c+= '"minutes":' + nMinutes + ',';
 			c+= '"seconds":' + nSeconds + ',';
 			c+= '"hours":' + nHours + ',';
+			c+= '"day":' + nDay + ',';
 			c+= '"month":' + nMonth + ',';
 			c+= '"year":' + nYear;
 			c+= '}';
@@ -191,6 +203,7 @@ WDP.time = function()
 		minutes : fMinutes,
 		seconds : fSeconds,
 		hours   : fHours,
+		day     : fDay,
 		month   : fMonth,
 		year    : fYear,
 		getJSON : fGenerateJSON

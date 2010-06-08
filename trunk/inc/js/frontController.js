@@ -103,17 +103,17 @@ var frontController = function()
 		var id = fGetIdFromAttr(form.attr('id'));
 		alert(id);
 		time = form.find('.time-settings');
-		var dateStr = time.find('input:eq(0)').val();
-		var timer = WDP.time();
-		date = date.Str.split("/");
+		//var dateStr = time.find('input:eq(0)').val();
+		/*var timer = WDP.time();
+		date = dateStr.split("/");
 		timer.day(date[0]);
 		timer.month(date[1]);
 		timer.year(date[2]);
 		timer.hours(time.find('select:eq(0)').val());
 		timer.minutes(time.find('select:eq(1)').val());
 		timer.seconds(time.find('select:eq(2)').val());
-		
-		alert(timer.getJSON());
+
+		alert(timer.getJSON());*/
 	}
 
 	function fRouteSaveEditedPoint(event)
