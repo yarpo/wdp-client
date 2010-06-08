@@ -3,37 +3,59 @@
 <html>
 <head>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
-	<script src="../point.js"></script>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<link rel="stylesheet" href="http://github.com/jquery/qunit/raw/master/qunit/qunit.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="http://github.com/jquery/qunit/raw/master/qunit/qunit.js"></script>
-	
 
 	<script type="text/javascript">
-	
 	$(document).ready(function(){
 		module("point");
 
-		test("Proste settery / gettery", function() {
-			var p = point();
+		test("prosty altitude", function() {
+			var p = WDP.point();
 			var res = 10;
-			point.altitude(res);
-			equals( point.altitude(), res, "Błąd z altitude prostym" );
+			p.altitude(res);
+			equals( p.altitude(), res, "prosty altitude jest ok" );
 		});
 
-		test("second test within module", function() {
-			ok( true, "all pass" );
+		test("prosty lat", function() {
+			var p = WDP.point();
+			var res = 10;
+			p.latitude(res);
+			equals( p.latitude(), res, "prosty lat jest ok" );
 		});
 
-		module("Module B");
-
-		test("some other test", function() {
-			expect(2);
-			equals( true, false, "failing test" );
-			equals( true, true, "passing test" );
+		test("prosty lng", function() {
+			var p = WDP.point();
+			var res = 10;
+			p.longitude(res);
+			equals( p.longitude(), res, "prosty lng jest ok" );
 		});
 
+		test("bez danych", function() {
+			var p = WDP.point();
+			equals( p.latitude(), undefined, "bez danych powinno byc undefined. " );
+		});
+
+		test("podanie kolejno wszystkich setterów ,a potem gettery", function() {
+			var p = WDP.point();
+			var res = 10;
+			p.latitude(res).altitude(10).longitude(10);
+			equals( p.altitude(), res, "skomplikowany setter getter altitude" );
+			equals( p.latitude(), res, "skomplikowany setter getter latitude" );
+			equals( p.longitude(), res, "skomplikowany setter getter longitude" );
+		});
+
+		test("generowanie JSON", function() {
+			var p = WDP.point();
+			var res = 10;
+			p.latitude(res).speed(res).altitude(10).longitude(10).time({"time":0,"minutes":0,"seconds":0,"hours":1,"month":0,"year":70,"timezoneOffset":-60,"day":4,"date":1});
+			equals( p.getJSON(), '{"time":{"time":0,"minutes":0,"seconds":0,"hours":1,"month":0,"year":70,"timezoneOffset":-60,"day":4,"date":1},"speed":10,"altitude":10,"longitude":10,"latitude":10}', "KOD JSON" );
+		});
 	});
+	var WDP = {};
 	</script>
+	<script type="text/javascript" src="../point.js"></script>
 
 </head>
 <body>
