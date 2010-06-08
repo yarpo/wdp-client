@@ -26,17 +26,7 @@ WDP.editorView = function()
 		olistOfPoints.appendTo(oContainer);
 	}
 
-	function fSerializeTimeObject(time)
-	{
-		var s = '{';
-		for (var x in time)
-		{
-			s += x + ':' +  time[x] + ',';
-		}
-		s = s.substr(0, s.length-1) + '}';
-		return (s);
-	}
-	
+
 	function fCreateInputText(name, value)
 	{
 		return '<input type="text" class="point" size="5" name="' + name + '" id="' + name + '" title="'+ value + '" value="' + Math.decimal(value, 3) + '" />';
@@ -50,8 +40,6 @@ WDP.editorView = function()
 
 	function fGenerateEditorCode(className, item)
 	{
-		var time = '';//fSerializeTimeObject(item.time);
-
 		var oTime = WDP.time();
 		oTime.timestamp(item.timestamp);
 
@@ -71,7 +59,6 @@ WDP.editorView = function()
 						c+= '<input type="button" class="add-new-point" value="+" name="add_' + iRouteIndex + '" id="add_' + iRouteIndex + '" />';
 						c+= '<input type="button" class="edit-time" value="więcej" name="time_' + iRouteIndex + '" id="time_' + iRouteIndex + '" />';
 						c+= '<input type="button" class="delete-point" value="-" name="del_' + iRouteIndex + '" id="del_' + iRouteIndex + '" />';
-						c+= '<span class="time">' + time + '</span>'
 					c+= '</li>';
 					c+= '<li class="time-settings">';
 						c+= '<table class="time"><tr>';
@@ -108,11 +95,10 @@ WDP.editorView = function()
 
 	function fGenerateFormattedDate(t)
 	{
-		
 		var date = new Date();
 		var d  = date.getDate();
 		var m = date.getMonth() + 1;
-		var tmp = date.getFullYear();
+		var y = date.getFullYear();
 
 		return (t.day() || d) + '/' + (t.month() || m) + '/' + (t.year() || y);
 	}
