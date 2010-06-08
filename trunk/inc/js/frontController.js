@@ -98,6 +98,24 @@ var frontController = function()
 		oView.startEditing(this);
 	}
 
+	function fGetTimeValues(form)
+	{
+		var id = fGetIdFromAttr(form.attr('id'));
+		alert(id);
+		time = form.find('.time-settings');
+		var dateStr = time.find('input:eq(0)').val();
+		var timer = WDP.time();
+		date = date.Str.split("/");
+		timer.day(date[0]);
+		timer.month(date[1]);
+		timer.year(date[2]);
+		timer.hours(time.find('select:eq(0)').val());
+		timer.minutes(time.find('select:eq(1)').val());
+		timer.seconds(time.find('select:eq(2)').val());
+		
+		alert(timer.getJSON());
+	}
+
 	function fRouteSaveEditedPoint(event)
 	{
 		var obj = $(this);
@@ -107,7 +125,7 @@ var frontController = function()
 		var lat = fGetInputValue(obj.find('input:eq(1)"'));
 		var lng = fGetInputValue(obj.find('input:eq(2)"'));
 		var time = obj.find('li:eq(3) span.time').html();
-
+fGetTimeValues(obj);
 		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", time : " + time + "}";
 		oDataSrc.updatePoint(routeId, pointId, point);
 
