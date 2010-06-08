@@ -54,6 +54,11 @@ WDP.view = function()
 	{
 		return confirm(msg);
 	}
+	
+	function fRemovePointRow(routeId, pointId)
+	{
+		var editId = '#edit_' + routeId;
+	}
 
 	return {
 		insertListOfRoutes : fInsertListOfRoutes,
@@ -62,6 +67,7 @@ WDP.view = function()
 		startEditing       : fStartEditing,
 		addNewPoint        : fAddNewPoint,
 		showTimeEditor     : fShowTimeEditor,
-		confirm            : fConfirm
+		confirm            : fConfirm,
+		removePointRow     : fRemovePointRow
 	};
 };

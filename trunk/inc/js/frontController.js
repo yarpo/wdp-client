@@ -177,13 +177,16 @@ var frontController = function()
 			var pointId = fGetIdFromAttr(this.name);
 			var routeId = fGetIdFromAttr(fGetAncestor($(this), 6).attr('id'));
 			alert(pointId + ' ' + routeId);
+			var res = oDataSrc.deletePoint(routeId, pointId);
+			if (res)
+			{
+				oDataSrc.getJSONRouteById(routeId, oView.editRoute);
+			}
+			else
+			{
+				alert("Co poszlo nie tak");
+			}
 		}
-		else
-		{
-			alert("To nie usuwam");
-		}
-
-		
 	}
 
 	return {
