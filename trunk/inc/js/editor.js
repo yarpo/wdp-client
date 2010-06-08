@@ -109,10 +109,22 @@ WDP.editorView = function()
 	{
 		var date = new Date();
 		var d  = date.getDate();
+		if (date.day !== undefined)
+		{
+			d = date.day;
+		}
 		var m = date.getMonth() + 1;
+		if (date.month !== undefined)
+		{
+			m = date.month;
+		}
 		var yy = date.getYear();
 		var y = (yy < 1000) ? yy + 1900 : yy;
-		return (date.day || d) + '/' + (date.month || m) + '/' + (date.year || y);
+		if (date.year !== undefined)
+		{
+			y = date.year;
+		}
+		return d + '/' + m + '/' + y;
 	}
 
 	return {

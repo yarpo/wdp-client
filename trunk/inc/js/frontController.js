@@ -103,17 +103,17 @@ var frontController = function()
 		var id = fGetIdFromAttr(form.attr('id'));
 		alert(id);
 		time = form.find('.time-settings');
-		//var dateStr = time.find('input:eq(0)').val();
-		/*var timer = WDP.time();
+		var dateStr = time.find('input:eq(0)').val();
+		var timer = WDP.time();
 		date = dateStr.split("/");
-		timer.day(date[0]);
-		timer.month(date[1]);
-		timer.year(date[2]);
-		timer.hours(time.find('select:eq(0)').val());
-		timer.minutes(time.find('select:eq(1)').val());
-		timer.seconds(time.find('select:eq(2)').val());
+		timer.day(parseInt(date[0]*1))
+			.month(parseInt(date[1]*1))
+			.year(parseInt(date[2]*1))
+			.hours(parseInt(time.find('select:eq(0)').val()))
+			.minutes(parseInt(time.find('select:eq(1)').val()))
+			.seconds(parseInt(time.find('select:eq(2)').val()));
 
-		alert(timer.getJSON());*/
+		return timer.getJSON();
 	}
 
 	function fRouteSaveEditedPoint(event)
@@ -124,8 +124,7 @@ var frontController = function()
 		var alt = fGetInputValue(obj.find('input:eq(0)"'));
 		var lat = fGetInputValue(obj.find('input:eq(1)"'));
 		var lng = fGetInputValue(obj.find('input:eq(2)"'));
-		var time = obj.find('li:eq(3) span.time').html();
-fGetTimeValues(obj);
+		var time = fGetTimeValues(obj);
 		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", time : " + time + "}";
 		oDataSrc.updatePoint(routeId, pointId, point);
 
@@ -165,7 +164,8 @@ fGetTimeValues(obj);
 				changeMonth: true,
 				changeYear: true,
 				showOtherMonths: true,
-				selectOtherMonths: true
+				selectOtherMonths: true,
+				dateFormat: 'dd/mm/yy'
 		}).click(function() {
 			$('#ui-datepicker-div').css({'z-index' : 100000000});
 		}); 
