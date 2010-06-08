@@ -18,8 +18,11 @@
 						find('input[type^="su"]').fadeOut(2000).
 						end().
 						find('input[type^="te"]').each(function() {
-							this.title = this.value;
-							this.value = Math.decimal(this.value, 3);
+							if (!$(this).hasClass('datepicker'))
+							{
+								this.title = this.value;
+								this.value = Math.decimal(this.value, 3);
+							}
 							$(this).css({background: '#fff'})
 						});
 				}
