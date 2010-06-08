@@ -63,28 +63,20 @@ WDP.point = function()
 	{
 		if (fIsSetter(obj))
 		{
-			oTime.minutes(obj.minutes)
-				.seconds(obj.seconds)
-				.hours(obj.hours)
-				.month(obj.month)
-				.year(obj.year);
+			oTime = obj
 			return obj;
 		}
 
 		return oTime;
 	}
 
-	function fParseObjFromJSON() { }
-
 	function fGenerateJSON() 
 	{
 		var c = '{';
-			c+= '"time":' + oTime.timestamp() + ',';
-			c+= '"time":' + oTime.getJSON() + ',';
-			c+= '"speed":' + nSpeed + ',';
-			c+= '"altitude":' + nAlt + ',';
-			c+= '"longitude":' + nLng + ',';
-			c+= '"latitude":' + nLat;
+			c+= '"timestamp":' + oTime.timestamp() + ',';
+			c+= '"altitude":'  + (nAlt || 0) + ',';
+			c+= '"longitude":' + (nLng || 0) + ',';
+			c+= '"latitude":'  + (nLat || 0);
 			c+= '}';
 		return c;
 	}
@@ -95,8 +87,7 @@ WDP.point = function()
 		latitude  : fLatitude,
 		speed     : fSpeed,
 		time      : fTime,
-		getJSON   : fGenerateJSON,
-		parseJSON : fParseObjFromJSON
+		getJSON   : fGenerateJSON
 	};
 
 	return obj;

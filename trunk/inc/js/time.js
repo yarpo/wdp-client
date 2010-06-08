@@ -1,3 +1,6 @@
+// obiekt obslugujacy czas punktu
+// autor Patryk Jar
+// data 8 czerwca 2010 r.
 
 WDP.time = function() 
 {
