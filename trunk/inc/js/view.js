@@ -50,12 +50,18 @@ WDP.view = function()
 		node.slideDown(1000);
 	}
 
+	function fConfirm(msg)
+	{
+		return confirm(msg);
+	}
+
 	return {
 		insertListOfRoutes : fInsertListOfRoutes,
 		clearListOfRoutes  : fClearListOfRoutes,
 		editRoute          : fEditRoute,
 		startEditing       : fStartEditing,
 		addNewPoint        : fAddNewPoint,
-		showTimeEditor    : fShowTimeEditor
+		showTimeEditor     : fShowTimeEditor,
+		confirm            : fConfirm
 	};
 };

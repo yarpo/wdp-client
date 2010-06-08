@@ -12,6 +12,7 @@ $(document).ready(
 		$('#track-list a.edit').live('click', controller.tracklist_item_edit);
 		$('.highslide-html-content .point').live('click', controller.route_point_edit);
 		$('.highslide-html-content .add-new-point').live('click', controller.show_form_for_new_point);
+		$('.highslide-html-content .delete-point').live('click', controller.route_point_delete);
 		$('.highslide-html-content .edit-time').live('click', controller.show_points_time_editor);
 		$('.highslide-html-content form.edit').live('submit', controller.route_point_update);
 		$('.highslide-html-content form.add').live('submit', controller.route_point_save_new);
@@ -152,11 +153,37 @@ var frontController = function()
 		}); 
 		
 	}
-	
+
+	function fGetAncestor(obj, n)
+	{
+		for(var i = 0; i < n; i++)
+		{
+			obj = obj.parent();
+		}
+
+		return obj;
+	}
+
 	function fRouteSaveNewPoint(event)
 	{
 		alert(event);
 		return false;
+	}
+
+	function fRouteDeletePoint(o)
+	{
+		if (oView.confirm("Czy na pewno chcesz usunąć ten punkt?"))
+		{
+			var pointId = fGetIdFromAttr(this.name);
+			var routeId = fGetIdFromAttr(fGetAncestor($(this), 6).attr('id'));
+			alert(pointId + ' ' + routeId);
+		}
+		else
+		{
+			alert("To nie usuwam");
+		}
+
+		
 	}
 
 	return {
@@ -166,6 +193,7 @@ var frontController = function()
 		tracklist_item_edit       : fTrackListItemEdit,
 		route_point_edit          : fRoutePointEdit,
 		route_point_update        : fRouteSaveEditedPoint,
+		route_point_delete        : fRouteDeletePoint,
 		route_point_save_new      : fRouteSaveNewPoint,
 		show_form_for_new_point   : fRouteAddFormForNewPoint,
 		show_points_time_editor   : fShowPointsTimeEditor
