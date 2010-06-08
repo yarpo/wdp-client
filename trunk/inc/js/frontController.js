@@ -113,7 +113,8 @@ var frontController = function()
 			.minutes(parseInt(time.find('select:eq(1)').val()))
 			.seconds(parseInt(time.find('select:eq(2)').val()));
 
-		return timer.getJSON();
+		var res = 'timestamp:' + timer.timestamp() + ', time:' + timer.getJSON();
+		return res;
 	}
 
 	function fRouteSaveEditedPoint(event)
@@ -125,7 +126,7 @@ var frontController = function()
 		var lat = fGetInputValue(obj.find('input:eq(1)"'));
 		var lng = fGetInputValue(obj.find('input:eq(2)"'));
 		var time = fGetTimeValues(obj);
-		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", time : " + time + "}";
+		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", " + time + "}";
 		oDataSrc.updatePoint(routeId, pointId, point);
 
 		obj.find('ul.point-item').pointEditor('close');
