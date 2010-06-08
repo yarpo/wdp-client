@@ -117,6 +117,27 @@ var frontController = function()
 		return res;
 	}
 
+
+	function fGetTimeValues2(form)
+	{
+		var id = fGetIdFromAttr(form.attr('id'));
+
+		time = form.find('.time-settings');
+		var dateStr = time.find('input:eq(0)').val();
+		var timer = WDP.time();
+		date = dateStr.split("/");
+		timer.day(parseInt(date[0]*1))
+			.month(parseInt(date[1]*1))
+			.year(parseInt(date[2]*1))
+			.hours(parseInt(time.find('select:eq(0)').val()))
+			.minutes(parseInt(time.find('select:eq(1)').val()))
+			.seconds(parseInt(time.find('select:eq(2)').val()));
+
+		alert(timer.timestamp());
+
+		return timer;
+	}
+
 	function fRouteSaveEditedPoint(event)
 	{
 		var obj = $(this);
@@ -183,8 +204,25 @@ var frontController = function()
 		return obj;
 	}
 
-	function fRouteSaveNewPoint(event)
+	function fPreccessPoint(self, func)
 	{
+		var obj = $(self);
+		var routeId = fGetIdFromAttr(self.id);
+		var pointId = fGetIdFromAttr(obj.find('input:eq(0)"').attr('id'));
+		var oPoint = WDP.point();
+		oPoint
+			.altitude(fGetInputValue(obj.find('input:eq(0)"')))
+			.latitude(fGetInputValue(obj.find('input:eq(1)"')))
+			.longitude(fGetInputValue(obj.find('input:eq(2)"')))
+			.time(fGetTimeValues2(obj));
+		//var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", " + time + "}";
+		func(routeId, pointId, oPoint.getJSON());
+
+		obj.find('ul.point-item').pointEditor('close');
+	}
+
+	function fRouteSaveNewPoint(event)
+	{/*
 		var obj = $(this);
 		var routeId = fGetIdFromAttr(this.id);
 		var pointId = fGetIdFromAttr(obj.find('input:eq(0)"').attr('id'));
@@ -192,12 +230,12 @@ var frontController = function()
 		var lat = fGetInputValue(obj.find('input:eq(1)"'));
 		var lng = fGetInputValue(obj.find('input:eq(2)"'));
 		var time = fGetTimeValues(obj);
-		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", time : " + time + "}";
+		var point = "{'longitude' : " + lng + ", 'latitude': " + lat +", 'altitude': "+alt+", " + time + "}";
 		oDataSrc.addPoint(routeId, pointId, point);
 
-		alert(point);
-
 		obj.find('ul.point-item').pointEditor('close');
+	*/
+		fPreccessPoint(this, oDataSrc.addPoint);
 		return false;
 	}
 
