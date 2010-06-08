@@ -1,23 +1,24 @@
 $(document).ready(
 	function()
 	{
-		var controller = fronController();
+		var controller = frontController();
 
 		controller.initialize_onload();
 
 		$("#tracks").tabs();
 		$("#charts").tabs();
 		$('#track-list input:checkbox').change(controller.tracklist_checkbox_change);
-		$('#track-list a.del').click(controller.tracklist_item_delete);
-		$('#track-list a.edit').click(controller.tracklist_item_edit);
+		$('#track-list a.del').live('click', controller.tracklist_item_delete);
+		$('#track-list a.edit').live('click', controller.tracklist_item_edit);
 		$('.highslide-html-content .point').live('click', controller.route_point_edit);
-		$('.highslide-html-content .add-point').live('click', controller.route_add_point);
+		$('.highslide-html-content .add-new-point').live('click', controller.show_form_for_new_point);
 		$('.highslide-html-content .edit-time').live('click', controller.show_points_time_editor);
-		$('.highslide-html-content form.edit').live('submit', controller.route_point_save);
+		$('.highslide-html-content form.edit').live('submit', controller.route_point_update);
+		$('.highslide-html-content form.add').live('submit', controller.route_point_save_new);
 	}
 );
 
-var fronController = function()
+var frontController = function()
 {
 	var URL = 'http://yarpo.republika.pl/studia/wdp/kml/';
 
@@ -151,6 +152,12 @@ var fronController = function()
 		}); 
 		
 	}
+	
+	function fRouteSaveNewPoint(event)
+	{
+		alert(event);
+		return false;
+	}
 
 	return {
 		tracklist_checkbox_change : fTrackListCheckboxChanged,
@@ -158,8 +165,9 @@ var fronController = function()
 		tracklist_item_delete     : fTrackListItemDelete,
 		tracklist_item_edit       : fTrackListItemEdit,
 		route_point_edit          : fRoutePointEdit,
-		route_point_save          : fRouteSaveEditedPoint,
-		route_add_point           : fRouteAddFormForNewPoint,
+		route_point_update        : fRouteSaveEditedPoint,
+		route_point_save_new      : fRouteSaveNewPoint,
+		show_form_for_new_point   : fRouteAddFormForNewPoint,
 		show_points_time_editor   : fShowPointsTimeEditor
 	};
 };

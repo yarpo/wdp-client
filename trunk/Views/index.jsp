@@ -40,7 +40,11 @@
 	<script type="text/javascript" src="inc/js/view.js"></script>
 	<script type="text/javascript" src="inc/js/dataSrc.js"></script>
 	<script type="text/javascript" src="inc/js/frontController.js"></script>
-	
+	<link type="text/css" href="inc/css/themes/base/jquery.ui.all.css" rel="stylesheet" />
+	<script type="text/javascript" src="inc/js/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="inc/js/ui/jquery.ui.core.js"></script>
+
+	<script type="text/javascript" src="inc/js/ui/jquery.ui.datepicker.js"></script>
 </head> 
 
 <body class="wdp-project">
