@@ -26,15 +26,15 @@ WDP.editorView = function()
 		olistOfPoints.appendTo(oContainer);
 	}
 
-
 	function fCreateInputText(name, value)
 	{
 		return '<input type="text" class="point" size="5" name="' + name + '" id="' + name + '" title="'+ value + '" value="' + Math.decimal(value, 3) + '" />';
 	}
-	
+
 	function fCreateAddingEditor(id, node)
 	{
-		var mock = {altitude : '0', latitude : '0', longitude : '', time : {time:{}}};
+		iRouteIndex = id;
+		var mock = {altitude : 0, latitude : 0, longitude : 0, timestamp : (new Date()).getTime()};
 		$('<li>' + fGenerateEditorCode('add', mock) + '</li>').insertAfter(node);
 	}
 
