@@ -7,20 +7,19 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
 	<link rel="stylesheet" href="inc/css/style.css" type="text/css"/>
-
-	<script type="text/javascript" src="inc/highslide/highslide-with-html.js"></script>
+	<link type="text/css" href="inc/css/themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="inc/highslide/highslide.css" />
 
+	<script type="text/javascript" src="inc/highslide/highslide-with-html.js"></script>
 	<script type="text/javascript">
 		hs.graphicsDir = 'inc/highslide/graphics/';
 		hs.outlineType = 'rounded-white';
 		hs.wrapperClassName = 'draggable-header';
 		hs.align = 'center';
 	</script>
-
-
 	<script type="text/javascript" src="inc/js/jquery.js"></script>
 	<script type="text/javascript" src="inc/js/ajax.js"></script>
+	
 	<script type="text/javascript" src="inc/js/tabs.plugin.js"></script>
 	<script type="text/javascript" src="inc/js/pointEditor.plugin.js"></script>
 	<script type="text/javascript" src="inc/charts/AC_RunActiveContent.js"></script>
@@ -31,8 +30,9 @@
 			requiredMinorVersion = 0,
 			requiredRevision = 45;
 
-			var WDP = function() {};
-			google.load('maps', '2');
+		var WDP = function() {};
+
+		google.load('maps', '2');
 	</script>
 
 	<script type="text/javascript" src="inc/js/map.js"></script>
@@ -40,10 +40,8 @@
 	<script type="text/javascript" src="inc/js/view.js"></script>
 	<script type="text/javascript" src="inc/js/dataSrc.js"></script>
 	<script type="text/javascript" src="inc/js/frontController.js"></script>
-	<link type="text/css" href="inc/css/themes/base/jquery.ui.all.css" rel="stylesheet" />
-	<script type="text/javascript" src="inc/js/jquery-1.4.2.js"></script>
+	<script type="text/javascript" src="inc/js/point.js"></script>
 	<script type="text/javascript" src="inc/js/ui/jquery.ui.core.js"></script>
-
 	<script type="text/javascript" src="inc/js/ui/jquery.ui.datepicker.js"></script>
 </head> 
 
@@ -103,8 +101,8 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
 			'height', '300',
 			'bgcolor', '#000000',
 			'movie', 'charts',
-			'src', 'http://localhost:8080/backend-0.0.1-SNAPSHOT/inc/charts/charts',
-			'FlashVars', 'library_path=http://localhost:8080/backend-0.0.1-SNAPSHOT/inc/charts/charts_library&xml_source=http://localhost:8080/backend-0.0.1-SNAPSHOT/inc/charts/mock/sample2.xml',
+			'src', 'inc/charts/charts',
+			'FlashVars', 'library_path=inc/charts/charts_library&xml_source=inc/charts/mock/sample2.xml',
 			'wmode', 'opaque',
 			'scale', 'noScale',
 			'id', 'charts',
@@ -147,9 +145,9 @@ if (AC_FL_RunContent == 0 || DetectFlashVer == 0) {
 			'width', '480',
 			'height', '300',
 			'bgcolor', '#000000',
-			'movie', '/charts',
-			'src', '/inc/charts/charts',
-			'FlashVars', 'library_path=/inc/charts/charts_library&xml_source=/inc/charts/mock/sample.xml',
+			'movie', 'charts',
+			'src', 'inc/charts/charts',
+			'FlashVars', 'library_path=inc/charts/charts_library&xml_source=inc/charts/mock/sample.xml',
 			'wmode', 'opaque',
 			'scale', 'noScale',
 			'id', 'charts',

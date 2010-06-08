@@ -118,7 +118,6 @@
 .wdp-project .highslide-html-content .editor-list ul.point-item li
 {
 	float: left;
-	width: 20%;
 }
 
 .wdp-project .highslide-html-content .editor-list ul.point-item span.time
@@ -135,7 +134,7 @@
 .wdp-project .highslide-html-content .editor-list .time-settings .time
 {
 	vertical-align: top;
-	width: 350px;
+	width: 380px;
 }
 
 .wdp-project .highslide-html-content .editor-list .time-settings .time .hour input
