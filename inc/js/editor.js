@@ -54,7 +54,7 @@ WDP.editorView = function()
 	{
 		var time = fSerializeTimeObject(item.time);
 
-		var c = '<form class="' + className + '">';
+		var c = '<form class="' + className + '"  id="'+ className +'_' + iRouteId + '">';
 				c += '<ul class="point-item">';
 					c+= '<li>';
 						c+= fCreateInputText('altitude_' + iRouteIndex, item.altitude);
