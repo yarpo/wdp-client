@@ -95,7 +95,7 @@
     clear: both;
 }
 
-.wdp-project .highslide-html-content input[type="submit"].update-point
+.wdp-project .highslide-html-content input[type="submit"].submit-point
 {
 	background: #eee;
 	color: #999;
@@ -104,7 +104,7 @@
 	margin: 0 3px;
 }
 
-.wdp-project .highslide-html-content input[type="submit"].update-point:hover
+.wdp-project .highslide-html-content input[type="submit"].submit-point:hover
 {
 	color: #000;
 }
