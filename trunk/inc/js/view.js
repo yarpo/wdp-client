@@ -48,16 +48,33 @@ WDP.view = function()
 	function fShowTimeEditor(node)
 	{
 		node.slideDown(1000);
+		$('.datepicker').datepicker({
+				changeMonth: true,
+				changeYear: true,
+				showOtherMonths: true,
+				selectOtherMonths: true,
+				dateFormat: 'dd/mm/yy'
+		}).click(fShowDatePicker); 
 	}
 
 	function fConfirm(msg)
 	{
 		return confirm(msg);
 	}
+
+	function fAlert(msg)
+	{
+		return alert(msg);
+	}
 	
 	function fRemovePointRow(routeId, pointId)
 	{
 		var editId = '#edit_' + routeId;
+	}
+
+	function fShowDatePicker()
+	{
+		$('#ui-datepicker-div').css({'z-index' : 100000000});
 	}
 
 	return {
@@ -68,6 +85,8 @@ WDP.view = function()
 		addNewPoint        : fAddNewPoint,
 		showTimeEditor     : fShowTimeEditor,
 		confirm            : fConfirm,
+		alert              : fAlert,
+		showDatePicker     : fShowDatePicker,
 		removePointRow     : fRemovePointRow
 	};
 };
