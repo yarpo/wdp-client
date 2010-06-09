@@ -9,7 +9,9 @@ WDP.view = function()
 
 		$('<li>').html('<input type="checkbox" id="' + id + 
 			'"><label for="' + id + '"> ' + item.name + 
-			'</label> <span>[ <a class="edit" href="#edit_' + item.id + 
+			'</label> <span>[ <a class="vt" href="#vt_chart_' + item.id + 
+			'">v(t)</a> | <a class="ht" href="#ht_chart_' + item.id + 
+			'">h(t)</a> | <a class="edit" href="#edit_' + item.id + 
 			'">edytuj</a> | <a class="del" href="#delete_' + item.id + 
 			'">usuń</a> ]</span>').appendTo('#track-list .list');
 		$('<div class="highslide-html-content" id="edit_'+ item.id +'"><div class="highslide-body"/></div>').appendTo('body');
