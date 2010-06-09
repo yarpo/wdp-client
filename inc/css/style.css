@@ -93,6 +93,9 @@
 
 .wdp-project #footer {
     clear: both;
+	position: fixed;
+	left: 0;
+	bottom: 0;
 }
 
 .wdp-project .highslide-html-content input[type="submit"].submit-point

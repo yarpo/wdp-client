@@ -20,10 +20,16 @@ WDP.map = function(dom_id, position, zoom)
 	function fInit(id)
 	{
 		oMap = new GMap2(document.getElementById(id));
+		fMoveToPoint(nDefLat, nDefLng, nZoom);
 		oMap.setCenter(new GLatLng(nDefLat, nDefLng), nZoom);
 		oMap.addMapType(G_SATELLITE_3D_MAP);
 		oMap.addControl(new GHierarchicalMapTypeControl());
 		oMap.addControl(new GLargeMapControl());
+	}
+
+	function fMoveToPoint(lat, lan, zoom)
+	{
+		oMap.setCenter(new GLatLng(lat, lan), zoom);
 	}
 
 	function fAddRoute(url)
@@ -52,9 +58,16 @@ WDP.map = function(dom_id, position, zoom)
 		}
 	}
 
+	function fSetCenterOnPoint( routeInfo )
+	{
+		var point = routeInfo.points[0];
+		fMoveToPoint(point.latitude, point.longitude, nZoom)
+	}
+
 	return {
 		initialize  : fInit,
 		addRoute    : fAddRoute,
-		removeRoute : fRemoveRoute
+		removeRoute : fRemoveRoute,
+		setCenterOnPoint : fSetCenterOnPoint
 	};
 };
