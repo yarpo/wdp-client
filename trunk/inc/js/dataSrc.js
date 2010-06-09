@@ -43,19 +43,19 @@ WDP.dataSrc = function()
 	}
 
 
-	function fGetKMLRouteById(id, funcSuccess, funcError)
+	function fGetKMLRouteById(id, fSuccess, fError)
 	{
 		var oAjax = ajaxCreator('Tasks/getKml.do?id=' + id + '&ftp=ftp://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_' + id + '.kml',
-			'text', null, funcError);
+			'json', fSuccess, fError);
 
-		//alert(oAjax.send().responseText);
-		return 'http://yarpo.republika.pl/studia/wdp/kml/file_0.kml';
+		oAjax.send();
+		return 'http://yarpo.republika.pl/studia/wdp/kml/file_'+ id +'.kml';
 	}
 
 	function fGetChart(id, type, fSuccess, fError)
 	{
 		var url = 'Tasks/getChart.do?id=' + id + '&type=' + type,
-			oAjax = ajaxCreator(url, 'xml', fSuccess, fError);
+			oAjax = ajaxCreator(url, 'json', fSuccess, fError);
 		oAjax.send();
 
 		return oAjax.response(); 
@@ -125,6 +125,7 @@ WDP.dataSrc = function()
 		getAllRoutes : fGetAllRoutes,
 		addPoint     : fAddPoint,
 		deletePoint  : fDeletePoint,
-		updatePoint  : fUpdatePoint
+		updatePoint  : fUpdatePoint,
+		getChart     : fGetChart
 	};
 };

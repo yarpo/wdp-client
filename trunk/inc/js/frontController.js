@@ -64,8 +64,7 @@ var frontController = function()
 	function fShowTrack(self)
 	{
 		var id = fGetIdFromAttr(self.id);
-		var a = oDataSrc.getKMLRouteById(id);
-		var url = fCreateUrlFromId(id);
+		var url = oDataSrc.getKMLRouteById(id, oMap.setCenterOnPoint);
 		oMap.addRoute(url);
 	}
 
@@ -207,14 +206,16 @@ var frontController = function()
 	function fShowHtChart()
 	{
 		var id = fGetIdFromAttr(this.href);
-		alert(id);
+		var oChart = WDP.chart().line().useNode('graph');
+		oDataSrc.getChart(id, 'altitude', oChart.display);
 		return false;
 	}
 
 	function fShowVtChart()
 	{
 		var id = fGetIdFromAttr(this.href);
-		alert(id);
+		var oChart = WDP.chart().line().useNode('graph');
+		oDataSrc.getChart(id, 'speed', oChart.display);
 		return false;
 	}
 
