@@ -37,7 +37,7 @@
 								css({background: '#ddd'}).
 								focus(function() { this.value = this.title; }).
 								blur(function() { 
-									this.value = Math.decimal(this.value, 3);
+								//	this.value = Math.decimal(this.value, 3);
 								});
 						});
 				}

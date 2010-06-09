@@ -113,8 +113,6 @@ var frontController = function()
 			.minutes(parseInt(time.find('select:eq(1)').val()))
 			.seconds(parseInt(time.find('select:eq(2)').val()));
 
-		alert(timer.timestamp());
-
 		return timer;
 	}
 
@@ -151,16 +149,6 @@ var frontController = function()
 	function fShowPointsTimeEditor()
 	{
 		oView.showTimeEditor($(this).parent().next());
-		$('.datepicker').datepicker({
-				changeMonth: true,
-				changeYear: true,
-				showOtherMonths: true,
-				selectOtherMonths: true,
-				dateFormat: 'dd/mm/yy'
-		}).click(function() {
-			$('#ui-datepicker-div').css({'z-index' : 100000000});
-		}); 
-		
 	}
 
 	function fGetAncestor(obj, n)
@@ -169,7 +157,6 @@ var frontController = function()
 		{
 			obj = obj.parent();
 		}
-
 		return obj;
 	}
 
@@ -192,6 +179,8 @@ var frontController = function()
 	function fRouteSaveNewPoint(event)
 	{
 		fPreccessPoint(this, oDataSrc.addPoint);
+		var routeId = fGetIdFromAttr(this.id);
+		oDataSrc.getJSONRouteById(routeId, oView.editRoute);
 		return false;
 	}
 
@@ -208,7 +197,7 @@ var frontController = function()
 			}
 			else
 			{
-				alert("Co poszlo nie tak");
+				oView.alert("Wystąpił błąd podczas usuwania punktu");
 			}
 		}
 	}
