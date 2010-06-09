@@ -10,6 +10,8 @@ $(document).ready(
 		$('#track-list input:checkbox').change(controller.tracklist_checkbox_change);
 		$('#track-list a.del').live('click', controller.tracklist_item_delete);
 		$('#track-list a.edit').live('click', controller.tracklist_item_edit);
+		$('#track-list a.vt').live('click', controller.show_vt_chart);
+		$('#track-list a.ht').live('click', controller.show_ht_chart);
 		$('.highslide-html-content .point').live('click', controller.route_point_edit);
 		$('.highslide-html-content .add-new-point').live('click', controller.show_form_for_new_point);
 		$('.highslide-html-content .delete-point').live('click', controller.route_point_delete);
@@ -202,6 +204,20 @@ var frontController = function()
 		}
 	}
 
+	function fShowHtChart()
+	{
+		var id = fGetIdFromAttr(this.href);
+		alert(id);
+		return false;
+	}
+
+	function fShowVtChart()
+	{
+		var id = fGetIdFromAttr(this.href);
+		alert(id);
+		return false;
+	}
+
 	return {
 		tracklist_checkbox_change : fTrackListCheckboxChanged,
 		initialize_onload         : fInitializeOnload,
@@ -212,7 +228,9 @@ var frontController = function()
 		route_point_delete        : fRouteDeletePoint,
 		route_point_save_new      : fRouteSaveNewPoint,
 		show_form_for_new_point   : fRouteAddFormForNewPoint,
-		show_points_time_editor   : fShowPointsTimeEditor
+		show_points_time_editor   : fShowPointsTimeEditor,
+		show_ht_chart             : fShowHtChart,
+		show_vt_chart             : fShowVtChart
 	};
 };
 
