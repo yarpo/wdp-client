@@ -99,7 +99,11 @@ var frontController = function()
 		var numberOfPages = data[0];
 		var pageNum = 1;
 		if (numberOfPages > 1) {
-			pageNum = prompt("Którą stronę chcesz wyświetlić? Liczba stron to: " + numberOfPages);
+			do
+			{
+				pageNum = prompt("Którą stronę chcesz wyświetlić? Liczba stron to: " + numberOfPages);
+				pageNum = parseInt(pageNum);
+			} while(isNaN(pageNum) || ( pageNum > numberOfPages || pageNum < 1 ))
 		}
 		oDataSrc.getJSONRoutePageById(id, pageNum, oView.editRoute);
 	}
