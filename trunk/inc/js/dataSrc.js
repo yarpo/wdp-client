@@ -41,6 +41,24 @@ WDP.dataSrc = function()
 		oAjax.send();
 		return oAjax.response();
 	}
+	
+	function fGetJSONNumberOfPagesById(id, fSuccess, fError)
+	{
+		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=getNumberOfPages&args=['+ id +']',
+			'json', function(data) { fSuccess(id, data); }, fError);
+
+		oAjax.send();
+		return oAjax.response();
+	}
+	
+	function fGetJSONRoutePageById(id, pageId, fSuccess, fError)
+	{
+		var oAjax = ajaxCreator('Tasks/daoRpc.do?function=getPage&args=['+ id + ',' + pageId +']',
+			'json', fSuccess, fError);
+
+		oAjax.send();
+		return oAjax.response();
+	}
 
 
 	function fGetKMLRouteById(id, fSuccess, fError)
@@ -126,6 +144,8 @@ WDP.dataSrc = function()
 		addPoint     : fAddPoint,
 		deletePoint  : fDeletePoint,
 		updatePoint  : fUpdatePoint,
-		getChart     : fGetChart
+		getChart     : fGetChart,
+		getJSONNumberOfPagesById : fGetJSONNumberOfPagesById,
+		getJSONRoutePageById : fGetJSONRoutePageById
 	};
 };
