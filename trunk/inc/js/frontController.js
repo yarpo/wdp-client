@@ -7,7 +7,7 @@ $(document).ready(
 
 		$("#tracks").tabs();
 		$("#charts").tabs();
-		$('#track-list input:checkbox').change(controller.tracklist_checkbox_change);
+		$('#track-list input:checkbox').live('click', function() { $(this).change(controller.tracklist_checkbox_change)});
 		$('#track-list a.del').live('click', controller.tracklist_item_delete);
 		$('#track-list a.edit').live('click', controller.tracklist_item_edit);
 		$('#track-list a.vt').live('click', controller.show_vt_chart);
