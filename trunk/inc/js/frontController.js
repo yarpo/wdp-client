@@ -18,6 +18,7 @@ $(document).ready(
 		$('.highslide-html-content .edit-time').live('click', controller.show_points_time_editor);
 		$('.highslide-html-content form.edit').live('submit', controller.route_point_update);
 		$('.highslide-html-content form.add').live('submit', controller.route_point_save_new);
+		$('#list-displayer').click(controller.reload_tracklist);
 	}
 );
 
@@ -74,6 +75,12 @@ var frontController = function()
 		window.onunload = GUnload
 		oView = WDP.view();
 		oDataSrc = WDP.dataSrc();
+		fReloadTracks();
+	}
+
+	function fReloadTracks()
+	{
+		oView.clearListOfRoutes();
 		oDataSrc.getAllRoutes(oView.insertListOfRoutes);
 	}
 
@@ -84,7 +91,7 @@ var frontController = function()
 		oMap.removeRoute(url)
 		oDataSrc.deleteRoute(id);
 		oView.clearListOfRoutes();
-		oDataSrc.getAllRoutes(oView.insertListOfRoutes);
+		oDataSrc.getAllRoutes(oView.insertListOfRoutes);//oDataSrc.getAllRoutes(oView.insertListOfRoutes);
 	}
 	
 	function fSetData(id, data) 
@@ -242,7 +249,8 @@ var frontController = function()
 		show_form_for_new_point   : fRouteAddFormForNewPoint,
 		show_points_time_editor   : fShowPointsTimeEditor,
 		show_ht_chart             : fShowHtChart,
-		show_vt_chart             : fShowVtChart
+		show_vt_chart             : fShowVtChart,
+		reload_tracklist          : fReloadTracks
 	};
 };
 
