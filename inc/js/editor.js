@@ -18,10 +18,11 @@ WDP.editorView = function()
 		olistOfPoints.append('<li><ul class="point-item"><li>wysokość</li><li>szerokość</li><li>długość</li></ul></li>');
 
 		var n = route.points.length;
-
-		for (iRouteIndex = 0; iRouteIndex < n; iRouteIndex++)
+		iRouteIndex = route.start;
+		for (var i = 0; i < n; i++)
 		{
-			olistOfPoints.append('<li>' + fGenerateEditorCode('edit', route.points[iRouteIndex]) + '</li>');
+			olistOfPoints.append('<li>' + fGenerateEditorCode('edit', route.points[i]) + '</li>');
+			iRouteIndex++;
 		}
 		olistOfPoints.appendTo(oContainer);
 	}

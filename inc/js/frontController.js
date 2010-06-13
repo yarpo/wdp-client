@@ -86,11 +86,21 @@ var frontController = function()
 		oView.clearListOfRoutes();
 		oDataSrc.getAllRoutes(oView.insertListOfRoutes);
 	}
+	
+	function fSetData(id, data) 
+	{
+		var numberOfPages = data[0];
+		var pageNum = 1;
+		if (numberOfPages > 1) {
+			pageNum = prompt("Którą stronę chcesz wyświetlić? Liczba stron to: " + numberOfPages);
+		}
+		oDataSrc.getJSONRoutePageById(id, pageNum, oView.editRoute);
+	}
 
 	function fTrackListItemEdit(self)
 	{
 		var id = fGetIdFromAttr(this);
-		oDataSrc.getJSONRouteById(id, oView.editRoute);
+		oDataSrc.getJSONNumberOfPagesById(id, fSetData);
 		return hs.htmlExpand(this, { headingText: 'Edytuj trasę ' + id, maincontentId: 'edit_' + id });
 	}
 
@@ -194,7 +204,8 @@ var frontController = function()
 			var res = oDataSrc.deletePoint(routeId, pointId);
 			if (res)
 			{
-				oDataSrc.getJSONRouteById(routeId, oView.editRoute);
+				var pageNum = Math.ceil((1.0 + pointId * 1.0) / 100.0);
+				oDataSrc.getJSONRoutePageById(routeId, pageNum, oView.editRoute);
 			}
 			else
 			{
