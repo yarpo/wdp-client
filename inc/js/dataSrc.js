@@ -60,14 +60,18 @@ WDP.dataSrc = function()
 		return oAjax.response();
 	}
 
+	function fCreateURL( url, id )
+	{
+		return url + id + '.kml'
+	}
 
 	function fGetKMLRouteById(id, fSuccess, fError)
 	{
-		var oAjax = ajaxCreator('Tasks/getKml.do?id=' + id + '&ftp=ftp://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_' + id + '.kml',
+		var oAjax = ajaxCreator('Tasks/getKml.do?id=' + id + '&ftp=' + fCreateURL(WDP.KML_FTP, id),
 			'json', fSuccess, fError);
 
 		oAjax.send();
-		return 'http://yarpo.republika.pl/studia/wdp/kml/file_'+ id +'.kml';
+		return fCreateURL(WDP.KML_URL, id);
 	}
 
 	function fGetChart(id, type, fSuccess, fError)
