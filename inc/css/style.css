@@ -91,6 +91,12 @@
     display: block;
 }
 
+
+.wdp-project #upload
+{
+	padding: 10px;
+}
+
 .wdp-project #footer {
     clear: both;
 	position: fixed;
