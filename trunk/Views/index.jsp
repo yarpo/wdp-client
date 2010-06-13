@@ -31,6 +31,8 @@
 			requiredRevision = 45;
 
 		var WDP = function() {};
+		WDP.KML_FTP = 'ftp://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_';
+		WDP.KML_URL = 'http://yarpo.republika.pl/studia/wdp/kml/file_';
 
 		google.load('maps', '2');
 	</script>
