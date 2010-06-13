@@ -58,7 +58,7 @@
 		<div id="tracks" class="tabs-container">
 			<h2>Trasy</h2>
 			<ul class="tabs">
-				<li><a href="#track-list" class="active">Lista tras</a></li>
+				<li><a href="#track-list" id="list-displayer" class="active">Lista tras</a></li>
 				<li><a href="#upload">Upload</a></li>
 
 			</ul><!-- .anchors -->
@@ -68,7 +68,8 @@
 			</div> <!-- #track-list -->
 
 			<div id="upload">
-				<form action="Tasks/upload.do" method="POST" enctype="multipart/form-data">
+				<iframe id="upload_window" name="upload_window" width="1" height="1" style="visibility: hidden"></iframe>
+				<form action="Tasks/upload.do" target="upload_window" method="POST" enctype="multipart/form-data">
 					<input type="file" name="fileInput" /> 
 					<input type="submit" value="Upload" />
 				</form>
