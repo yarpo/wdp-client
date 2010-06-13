@@ -6,7 +6,7 @@
 	<title>Wizualizacja Danych Przestrzennych - projekt</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 
-	<link rel="stylesheet" href="/backend-0.0.1-SNAPSHOT/inc/css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="inc/css/style.css" type="text/css"/>
 	<link type="text/css" href="inc/css/themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="inc/highslide/highslide.css" />
 
@@ -19,17 +19,11 @@
 	</script>
 	<script type="text/javascript" src="inc/js/jquery.js"></script>
 	<script type="text/javascript" src="inc/js/ajax.js"></script>
-	
 	<script type="text/javascript" src="inc/js/tabs.plugin.js"></script>
 	<script type="text/javascript" src="inc/js/pointEditor.plugin.js"></script>
-	<script type="text/javascript" src="inc/charts/AC_RunActiveContent.js"></script>
 	<script type="text/javascript" src="http://www.google.com/jsapi?key=ABQIAAAAUmUZlQ5cCSp2E-VNZ4ql_BT2yXp_ZAY8_ufC3CFXhHIE1NvwkxQ_q2TRh-_TwwygGCkVjbV4jyGokg"></script>
 
 	<script type="text/javascript">
-		var requiredMajorVersion = 10,
-			requiredMinorVersion = 0,
-			requiredRevision = 45;
-
 		var WDP = function() {};
 		WDP.KML_FTP = 'ftp://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_';
 		WDP.KML_URL = 'http://yarpo.republika.pl/studia/wdp/kml/file_';
