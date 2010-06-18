@@ -5,11 +5,9 @@
 <head>
 	<title>Wizualizacja Danych Przestrzennych - projekt</title>
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-
 	<link rel="stylesheet" href="inc/css/style.css" type="text/css"/>
 	<link type="text/css" href="inc/css/themes/base/jquery.ui.all.css" rel="stylesheet" />
 	<link rel="stylesheet" type="text/css" href="inc/highslide/highslide.css" />
-
 	<script type="text/javascript" src="inc/highslide/highslide-with-html.js"></script>
 	<script type="text/javascript">
 		hs.graphicsDir = 'inc/highslide/graphics/';
