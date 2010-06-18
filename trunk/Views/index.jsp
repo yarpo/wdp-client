@@ -25,7 +25,9 @@
 
 	<script type="text/javascript">
 		var WDP = function() {};
-		WDP.KML_FTP = 'ftp://yarpo:saturn1987r@ftp.republika.pl/studia/wdp/kml/file_';
+		// przykladowe dane
+		// dla takich danych NIE bedzie dzialac. Nalezy podac wlasciwe
+		WDP.KML_FTP = 'ftp://yarpo:***@ftp.republika.pl/studia/wdp/kml/file_';
 		WDP.KML_URL = 'http://yarpo.republika.pl/studia/wdp/kml/file_';
 
 		google.load('maps', '2');
